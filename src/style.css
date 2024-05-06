@@ -1,6 +1,11 @@
-/* CSS Custom Properties Definitions */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
+  font-family: "Noto Sans KR", sans-serif;
   --maxWidth-none: "none";
   --maxWidth-xs: 20rem;
   --maxWidth-sm: 24rem;
@@ -76,7 +81,6 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
 }
@@ -99,7 +103,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading);
   margin-top: var(--spacing-12);
   margin-bottom: var(--spacing-6);
   line-height: var(--lineHeight-tight);
@@ -239,9 +242,8 @@ a:focus {
 /* Custom classes */
 
 .global-wrapper {
-  margin: var(--spacing-0) auto;
+  margin: 0 auto;
   max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10) var(--spacing-5);
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
@@ -279,7 +281,6 @@ a:focus {
 
 .header-link-home {
   font-weight: var(--fontWeight-bold);
-  font-family: var(--font-heading);
   text-decoration: none;
   font-size: var(--fontSize-2);
 }
@@ -306,7 +307,6 @@ a:focus {
 
 .blog-post header p {
   font-size: var(--fontSize-2);
-  font-family: var(--font-heading);
 }
 
 .blog-post-nav ul {
