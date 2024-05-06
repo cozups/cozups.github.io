@@ -177,6 +177,14 @@ ol {
   list-style-position: outside;
   list-style-image: none;
 }
+ul {
+  list-style: disc;
+  list-style-position: inside;
+}
+ol {
+  list-style: decimal;
+  list-style-position: inside;
+}
 
 ul li,
 ol li {
@@ -328,4 +336,22 @@ a:focus {
   ol {
     list-style-position: inside;
   }
+}
+
+pre[class*="language-"] code {
+  font-size: 0.8em;
+}
+
+aside {
+  background: rgb(222, 222, 222);
+  padding: 1em;
+  border-radius: 12px;
+}
+
+thead {
+  background: rgb(191, 225, 255);
+}
+
+tbody td {
+  padding: 0.3em 0;
 }
