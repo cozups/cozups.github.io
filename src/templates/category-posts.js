@@ -6,28 +6,19 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Categories from "../components/categories";
 
-const BlogIndex = ({ data, location }) => {
+const CategoryPostsTemplate = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
-  const posts = data.allMarkdownRemark.nodes;
-  const categories = data.allMarkdownRemark.categoryList;
+  const categories = data.categoryList.categories;
+  const posts = data.categoryPosts.nodes;
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    );
-  }
+  const { category } = pageContext;
 
   return (
     <Layout location={location} title={siteTitle}>
+      <Seo title={`Posts in ${category}`} /> {/* 페이지 title 수정 */}
       <Bio />
       <Categories categories={categories} />
+      <h3>{`Current: ${category}`}</h3> {/* 현재 카테고리 표시 */}
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
@@ -69,29 +60,25 @@ const BlogIndex = ({ data, location }) => {
   );
 };
 
-export default BlogIndex;
-
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="All posts" />;
+export default CategoryPostsTemplate;
 
 export const pageQuery = graphql`
-  {
+  query ($category: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(
+    categoryList: allMarkdownRemark {
+      categories: distinct(field: frontmatter___category)
+    }
+    categoryPosts: allMarkdownRemark(
       sort: {
         fields: [frontmatter___date, frontmatter___title]
         order: [DESC, DESC]
       }
+      filter: { frontmatter: { category: { eq: $category } } }
     ) {
-      categoryList: distinct(field: frontmatter___category)
       nodes {
         id
         excerpt

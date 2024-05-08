@@ -9,6 +9,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`);
+const categoryPosts = path.resolve(`./src/templates/category-posts.js`);
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -20,6 +21,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     {
       allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+        categoryList: distinct(field: frontmatter___category)
         nodes {
           id
           fields {
@@ -40,6 +42,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.allMarkdownRemark.nodes;
 
+  const categories = result.data.allMarkdownRemark.categoryList;
+
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
@@ -58,6 +62,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           previousPostId,
           nextPostId,
         },
+      });
+    });
+  }
+
+  if (categories.length > 0) {
+    categories.forEach(category => {
+      createPage({
+        path: `/${category}/`,
+        component: categoryPosts,
+        context: { category },
       });
     });
   }
