@@ -2,6 +2,7 @@
 title: "Context API"
 date: "2023-02-10"
 description: "Context API에 대하여"
+category: "Frontend"
 tags: ["React"]
 ---
 

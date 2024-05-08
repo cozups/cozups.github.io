@@ -2,6 +2,7 @@
 title: "[React Native] FlatList"
 date: "2022-10-06"
 description: "ScrollView와 비슷하지만 좀 더 효율적인 FlatList"
+category: "Frontend"
 tags: ["React Native"]
 ---
 

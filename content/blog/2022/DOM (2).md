@@ -2,6 +2,7 @@
 title: "7. DOM(2)"
 date: "2022-12-06"
 description: "모던 자바스크립트 Deep Dive [39장]"
+category: "Study"
 tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 

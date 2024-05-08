@@ -2,6 +2,7 @@
 title: "12. this"
 date: "2023-01-06"
 description: "모던 자바스크립트 Deep Dive [22장]"
+category: "Study"
 tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 

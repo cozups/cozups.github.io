@@ -2,6 +2,7 @@
 title: "20. 제네레이터와 async/await"
 date: "2023-02-15"
 description: "모던 자바스크립트 Deep Dive [46장]"
+category: "Study"
 tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 

@@ -2,6 +2,7 @@
 title: "9. let, const 키워드와 블록 레벨 스코프"
 date: "2022-12-21"
 description: "모던 자바스크립트 Deep Dive [15장]"
+category: "Study"
 tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 
