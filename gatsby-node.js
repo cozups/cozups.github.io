@@ -3,9 +3,9 @@
  *
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
  */
-
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const { paginate } = require(`gatsby-awesome-pagination`);
 
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`);
@@ -65,6 +65,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
   }
+
+  paginate({
+    createPage,
+    items: posts,
+    itemsPerPage: 10,
+    pathPrefix: "/blog",
+    component: path.resolve("./src/templates/blog-list.js"),
+  });
 
   if (categories.length > 0) {
     categories.forEach(category => {

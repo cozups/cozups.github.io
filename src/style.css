@@ -359,3 +359,7 @@ thead {
 tbody td {
   padding: 0.3em 0;
 }
+
+.page-activated {
+  @apply bg-blue-600 text-white;
+}
