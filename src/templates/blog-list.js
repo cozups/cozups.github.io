@@ -6,12 +6,10 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Categories from "../components/categories";
 
-const BlogIndex = ({ data, location, pageContext }) => {
+const BlogListTemplate = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const posts = data.allMarkdownRemark.nodes;
   const categories = data.categoryList.categories;
-
-  console.log(pageContext);
 
   if (posts.length === 0) {
     return (
@@ -26,12 +24,11 @@ const BlogIndex = ({ data, location, pageContext }) => {
     );
   }
 
-  const prevPageDisabled = pageContext.pageNumber === 0;
-  const nextPageDisabled =
-    pageContext.humanPageNumber === pageContext.numberOfPages;
+  const prevPageDisabled = pageContext.currentPage === 1;
+  const nextPageDisabled = pageContext.currentPage === pageContext.numPages;
   const pageNumberList = Array.from(
-    { length: pageContext.numberOfPages < 10 ? pageContext.numberOfPages : 10 },
-    (_, index) => Math.floor(pageContext.pageNumber / 10) + index + 1
+    { length: pageContext.numPages < 10 ? pageContext.numPages : 10 },
+    (_, index) => Math.floor(pageContext.currentPage / 10) + index + 1
   );
 
   return (
@@ -86,9 +83,9 @@ const BlogIndex = ({ data, location, pageContext }) => {
             <li>
               <Link
                 className={`text-black border-black border-2 px-2 ${
-                  pageNumber === pageContext.pageNumber + 1 && "page-activated"
+                  pageNumber === pageContext.currentPage && "page-activated"
                 }`}
-                to={pageNumber === 1 ? `/blog` : `/blog/${pageNumber}`}
+                to={pageNumber === 1 ? `/` : `/page/${pageNumber}`}
               >
                 {pageNumber}
               </Link>
@@ -105,7 +102,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
   );
 };
 
-export default BlogIndex;
+export default BlogListTemplate;
 
 /**
  * Head export to define metadata for the page

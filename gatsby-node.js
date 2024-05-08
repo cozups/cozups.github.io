@@ -5,7 +5,6 @@
  */
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const { paginate } = require(`gatsby-awesome-pagination`);
 
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`);
@@ -66,12 +65,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   }
 
-  paginate({
-    createPage,
-    items: posts,
-    itemsPerPage: 10,
-    pathPrefix: "/blog",
-    component: path.resolve("./src/templates/blog-list.js"),
+  const postsPerPage = 10;
+  const numPages = Math.ceil(posts.length / postsPerPage);
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/` : `/page/${i + 1}`,
+      component: path.resolve("./src/templates/blog-list.js"),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    });
   });
 
   if (categories.length > 0) {
