@@ -2,6 +2,7 @@
 title: "2. Spread 문법과 destructuring 할당"
 date: "2022-11-07"
 description: "모던 자바스크립트 Deep Dive [35장][36장]"
+tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 
 # Spread 문법

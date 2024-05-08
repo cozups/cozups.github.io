@@ -2,6 +2,7 @@
 title: "18. REST API"
 date: "2023-01-30"
 description: "모던 자바스크립트 Deep Dive [44장]"
+tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 
 # REST

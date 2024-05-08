@@ -342,10 +342,14 @@ pre[class*="language-"] code {
   font-size: 0.8em;
 }
 
-aside {
+aside:not(#tags) {
   background: rgb(222, 222, 222);
   padding: 1em;
   border-radius: 12px;
+}
+
+aside#tags li {
+  @apply bg-blue-200 bg-opacity-70 inline-block px-2 py-1 rounded-lg text-sm mr-2;
 }
 
 thead {

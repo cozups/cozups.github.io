@@ -2,6 +2,7 @@
 title: "17. Ajax"
 date: "2023-01-30"
 description: "모던 자바스크립트 Deep Dive [43장]"
+tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 
 # Ajax란?

@@ -1,15 +1,17 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import * as React from "react";
+import { Link, graphql } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
   location,
 }) => {
-  const siteTitle = site.siteMetadata?.title || `Title`
+  const siteTitle = site.siteMetadata?.title || `Title`;
+  const tags = post.frontmatter.tags || [];
+  console.log(post);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -22,6 +24,15 @@ const BlogPostTemplate = ({
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
+        <aside id="tags">
+          {
+            <ul>
+              {tags.map(tag => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          }
+        </aside>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
@@ -58,8 +69,8 @@ const BlogPostTemplate = ({
         </ul>
       </nav>
     </Layout>
-  )
-}
+  );
+};
 
 export const Head = ({ data: { markdownRemark: post } }) => {
   return (
@@ -67,10 +78,10 @@ export const Head = ({ data: { markdownRemark: post } }) => {
       title={post.frontmatter.title}
       description={post.frontmatter.description || post.excerpt}
     />
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
@@ -91,6 +102,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
@@ -110,4 +122,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

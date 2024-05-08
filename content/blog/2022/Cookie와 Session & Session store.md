@@ -2,6 +2,8 @@
 title: Cookie와 Session & Session store
 date: "2022-05-22"
 description: ""
+category: "Frontend"
+tags: ["Web"]
 ---
 
 # 쿠키 Cookie

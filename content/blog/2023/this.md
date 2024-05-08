@@ -2,6 +2,7 @@
 title: "12. this"
 date: "2023-01-06"
 description: "모던 자바스크립트 Deep Dive [22장]"
+tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 
 # this 키워드
@@ -39,7 +40,9 @@ this 바인딩은 함수 호출 방식에 의해 동적으로 결정된다.
 ⇒ 일반 함수로 호출된 모든 함수 (중첩 함수, 콜백 함수 포함) 내부의 this는 전역 객체를 가리킨다.
 
 - 그러나 메서드 내부의 중첩 함수, 콜백 함수의 this가 전역 객체를 가리키는 것은 문제가 있다.
+
   - 이 경우, this 바인딩을 변수에 할당하는 방법이 있다.
+
   ```jsx
   var value = 1;
 
@@ -58,6 +61,7 @@ this 바인딩은 함수 호출 방식에 의해 동적으로 결정된다.
 
   obj.foo();
   ```
+
   - 또는 `Function.prototype.apply`, `Function.prototype.call`, `Function.prototype.bind` 메서드를 사용하는 방법도 있다.
   - 또는 **화살표 함수**를 사용하는 방법이 있다.
     - 화살표 함수 내부의 this는 상위 스코프의 this를 가리킨다.
@@ -86,6 +90,7 @@ console.log(person.getName()); // Lee
 ![Untitled](./images/this1.png)
 
 - 따라서 getName 메서드는 다른 객체의 프로퍼티에 할당하여 다른 객체의 메서드가 될 수 있고 일반 변수에 할당하여 일반 함수로 호출될 수도 있다.
+
   ```jsx
   const anotherPerson = {
     name: "Kim",
@@ -105,6 +110,7 @@ console.log(person.getName()); // Lee
   // 브라우저 환경에서 window.name은 브라우저 창의 이름을 나타내는 빌트인 프로퍼티이며 기본값은 ''이다.
   // Node.js 환경에서 this.name은 undefined다.
   ```
+
   ![Untitled](./images/this2.png)
 
 ⇒ 메서드 내부의 this는 프로퍼티로 메서드를 가리키고 있는 객체와는 관계가 없고 메서드를 호출한 객체에 바인딩 된다.
@@ -198,7 +204,9 @@ console.log(circle2.getDiameter()); // 20
   ```
 
   - apply, call 메서드를 통해 arguments와 같은 유사 배열 객체에 배열 메서드를 사용할 수 있다.
+
     - arguments 객체는 배열이 아니기 때문에 Array.prototype.slice 메서드를 사용할 수 없지만 apply, call 메서드를 이용하면 가능하다.
+
       ```jsx
       function convertArgsToArray() {
         console.log(arguments);
@@ -216,7 +224,9 @@ console.log(circle2.getDiameter()); // 20
       ```
 
 - bind 메서드는 apply, call 메서드와 달리 함수를 호출하지 않는다.
+
   - 첫 번째 인수로 전달한 값으로 this 바인딩이 교체된 함수를 새롭게 생성해 반환한다.
+
   ```jsx
   function getThisBinding() {
     return this;
@@ -231,7 +241,9 @@ console.log(circle2.getDiameter()); // 20
   // bind 메서드는 함수를 호출하지는 않으므로 명시적으로 호출해야 한다.
   console.log(getThisBinding.bind(thisArg)()); // {a: 1}
   ```
+
   - 콜백 함수 내부의 this를 바인딩하는 예시
+
     ```jsx
     const person = {
       name: "Lee",

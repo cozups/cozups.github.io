@@ -3,6 +3,7 @@ title: useEffect
 date: "2022-09-06"
 description: "useEffect 분명 한 번 배웠는데 이것저것 헷갈린다.
 그래서 다시 공부해봤다!"
+tags: ["React"]
 ---
 
 # useEffect ?

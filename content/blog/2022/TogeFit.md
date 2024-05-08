@@ -2,6 +2,8 @@
 title: TogeFit
 date: "2022-08-26"
 description: "건강 관리 프로젝트 TogeFit 설명"
+category: "Projects"
+tags: ["Docs", "Refactoring"]
 ---
 
 # TogeFit ?

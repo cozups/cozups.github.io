@@ -2,6 +2,7 @@
 title: "9. let, const 키워드와 블록 레벨 스코프"
 date: "2022-12-21"
 description: "모던 자바스크립트 Deep Dive [15장]"
+tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 
 # var 키워드로 선언한 변수의 문제점

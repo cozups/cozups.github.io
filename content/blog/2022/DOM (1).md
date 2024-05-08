@@ -2,6 +2,7 @@
 title: "6. DOM(1)"
 date: "2022-11-30"
 description: "모던 자바스크립트 Deep Dive [39장]"
+tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 
 > DOM(Document Object Model)은 **HTML 문서의 계층적 구조와 정보를 표현**하여 이를 제어할 수 있는 API, 즉 **프로퍼티와 메서드를 제공**하는 트리 자료구조이다.

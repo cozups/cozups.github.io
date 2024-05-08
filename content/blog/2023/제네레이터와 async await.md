@@ -2,6 +2,7 @@
 title: "20. 제네레이터와 async/await"
 date: "2023-02-15"
 description: "모던 자바스크립트 Deep Dive [46장]"
+tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 ---
 
 # 제네레이터란?
@@ -89,7 +90,9 @@ console.log("next" in generator); // true
 - `next`: 제네레이터 함수의 `yield` 표현식까지 코드 블록 실행
   - 반환: `{ value: yield된 값, done: false }`
 - `return`
+
   - 반환: `{ value: 인수로 전달받은 값, done: true }`
+
   ```jsx
   function* genFunc() {
     try {
@@ -106,8 +109,11 @@ console.log("next" in generator); // true
   console.log(generator.next()); // {value: 1, done: false}
   console.log(generator.return("End!")); // {value: "End!", done: true}
   ```
+
 - `throw`: 인수로 전달받은 에러를 발생
+
   - 반환: `{ value: undefined, done: true }`
+
   ```jsx
   function* genFunc() {
     try {

@@ -2,6 +2,7 @@
 title: "[React Native] FlatList"
 date: "2022-10-06"
 description: "ScrollView와 비슷하지만 좀 더 효율적인 FlatList"
+tags: ["React Native"]
 ---
 
 새로운 프로젝트에 합류하게 되면서 React Native를 독학하게 되었다. (현재는 무산됨..)
