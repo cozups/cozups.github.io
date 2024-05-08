@@ -24,7 +24,7 @@ const CategoryPostsTemplate = ({ data, location, pageContext }) => {
           const title = post.frontmatter.title || post.fields.slug;
 
           return (
-            <li key={post.fields.slug}>
+            <li key={post.fields.slug} className="min-h-24">
               <article
                 className="post-list-item"
                 itemScope
