@@ -1,5 +1,5 @@
 ---
-title: "# [React Query] Queries - parallel, dependent, paginated, infinite queries"
+title: "[React Query] Queries - parallel, dependent, paginated, infinite queries"
 date: "2023-12-11"
 description: "Parallel Queries / Dependent Queries / Paginated Queries / Infinte Queries"
 category: "Frontend"
