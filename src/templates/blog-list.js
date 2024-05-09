@@ -49,12 +49,7 @@ const BlogListTemplate = ({ data, location, pageContext }) => {
                 <header>
                   <h2>
                     <Link to={post.fields.slug} itemProp="url">
-                      <span
-                        itemProp="headline"
-                        className="text-black hover:text-blue-500 transition-colors ease-in duration-150"
-                      >
-                        {title}
-                      </span>
+                      <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
                   <small>{post.frontmatter.date}</small>

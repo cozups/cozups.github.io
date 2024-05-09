@@ -4,12 +4,12 @@ import { Link } from "gatsby";
 const Categories = ({ categories }) => {
   return (
     <nav>
-      <ul className="list-none flex gap-2">
+      <ul className="list-none flex gap-2 flex-wrap">
         {categories.map(category => (
           <li key={category}>
             <Link
               to={`/${category}`}
-              className="text-gray-600 bg-gray-100 px-2 py-1 rounded text-sm"
+              className="text-gray-600 bg-gray-100 px-2 py-1 rounded text-xs md:text-sm"
             >
               {category}
             </Link>
