@@ -5,6 +5,7 @@ import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Categories from "../components/categories";
+import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
 
 const BlogListTemplate = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -67,17 +68,24 @@ const BlogListTemplate = ({ data, location, pageContext }) => {
           );
         })}
       </ol>
-      <div className="flex justify-center">
-        {!prevPageDisabled && (
-          <Link to={pageContext.previousPagePath} className="text-black">
-            {"<"}
+      <div className="pagination">
+        {
+          <Link
+            to={
+              pageContext.currentPage === 2
+                ? `/`
+                : `/page/${pageContext.currentPage - 1}`
+            }
+            className="text-black"
+          >
+            {!prevPageDisabled ? <MdArrowBackIosNew /> : ""}
           </Link>
-        )}
+        }
         <ul className="list-none flex">
           {pageNumberList.map(pageNumber => (
             <li>
               <Link
-                className={`text-black border-black border-2 px-2 ${
+                className={`pagination-item ${
                   pageNumber === pageContext.currentPage && "page-activated"
                 }`}
                 to={pageNumber === 1 ? `/` : `/page/${pageNumber}`}
@@ -87,11 +95,14 @@ const BlogListTemplate = ({ data, location, pageContext }) => {
             </li>
           ))}
         </ul>
-        {!nextPageDisabled && (
-          <Link to={pageContext.nextPagePath} className="text-black">
-            {">"}
+        {
+          <Link
+            to={`/page/${pageContext.currentPage + 1}`}
+            className="text-black"
+          >
+            {!nextPageDisabled ? <MdArrowForwardIos /> : ""}
           </Link>
-        )}
+        }
       </div>
     </Layout>
   );

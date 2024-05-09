@@ -319,5 +319,13 @@ tbody td {
 }
 
 .page-activated {
-  @apply bg-blue-600 text-white;
+  @apply bg-blue-600 text-white rounded;
+}
+
+.pagination {
+  @apply flex justify-between pt-4;
+}
+
+.pagination-item {
+  @apply px-3 py-1;
 }
