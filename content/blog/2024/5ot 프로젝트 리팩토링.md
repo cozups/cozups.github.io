@@ -464,12 +464,22 @@ searchlist 페이지에 검색 결과를 사용하기 위해 세션 스토리지
 
 기존 코드에서는
 
-```jsx
-return `
+```js
+function cartRendering() {
+  let i = 0;
+  cartList.innerHTML = "";
+
+  cartCountField.innerText = `${cart.length}개 상품`;
+
+  const elements = cart.map(item => {
+    const { product_image, product_name, quantity, price } = item;
+    const total = price * quantity;
+    return `
       <li>
-          <input type="checkbox" class="list-checkbox" data-product-id="${product_id}"/>
+          <input type="checkbox" class="list-checkbox" value="${i}"/>
           <img
             src="${product_image}"
+            alt=""
           />
           <div class="cart-item-info">
             <h3>${product_name}</h3>
@@ -478,11 +488,113 @@ return `
                 <i class="fas fa-minus"></i>
               </button>
               <span class="qty">${quantity}</span>
-              <button class="plus" data-product-id="${product_id}"><i class="fas fa-plus"></i></button>
+              <button class="plus" value="${i}"><i class="fas fa-plus"></i></button>
+            </div>
+            <span class="item-price">${price}</span>
+            <span class="item-total-price">총 ${total}원</span>
+            <button class='cancel' value="${i++}"><i class="fa-solid fa-trash-can"></i></buttonc>
+          </div>
+      </li>`;
+  });
+  cartList.innerHTML = elements.join("");
+
+  setOrderInfo();
+  cartList.addEventListener("click", clickHandler);
+}
+```
+
+`i` 변수를 이용하여 리스트를 렌더링 했다. 그렇게 했던 이유는 요소를 눌렀을 때 그 요소가 어떤(몇 번째) 요소인지 알아내야 했기 때문이었다. 당시 내가 아는 지식으로 생각해낼 수 있는 최선의 방법이었기 때문에 이렇게 구현했다.
+
+그러나 리팩토링을 진행하면서 data 어트리뷰트에 대해 알게 되었다. `data-`를 붙여 사용자가 커스텀 어트리뷰트를 사용할 수 있다.
+
+```js
+function cartRendering() {
+  cartList.innerHTML = "";
+
+  cartCountField.innerText = `${cart.length}개 상품`;
+
+  const elements = cart.map(item => {
+    const { product_image, product_name, quantity, price, product_id } = item;
+    const total = price * quantity;
+    return `
+      <li data-product-id="${product_id}">
+          <input type="checkbox" class="list-checkbox" data-product-id="${product_id}"/>
+          <img
+            src="${product_image}"
+          />
+          <div class="cart-item-info">
+            <h3>${product_name}</h3>
+            <div class="item-quantity">
+              <button class="minus" data-product-id="${product_id}">
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="qty">${quantity}</span>
+              <button class="plus" data-product-id="${product_id}">
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
             <span class="item-price">${price}</span>
             <span class="item-total-price">총 ${total}원</span>
             <button class='cancel' data-product-id="${product_id}"><i class="fa-solid fa-trash-can"></i></buttonc>
           </div>
       </li>`;
+  });
+  cartList.innerHTML = elements.join("");
+
+  setOrderInfo();
+  cartList.addEventListener("click", clickHandler);
+}
 ```
+
+`data-product-id`를 이용하여 해당 요소가 어떤 요소인지 찾기로 한다.
+
+```js
+function changeQuantity(type, product_id) {
+  const quantityField = document.querySelector(
+    `li[data-product-id="${product_id}"] span.qty`
+  );
+  const totalPriceField = document.querySelector(
+    `li[data-product-id="${product_id}"] span.item-total-price`
+  );
+
+  const itemIdx = cart.findIndex(item => item.product_id === product_id);
+  const item = cart[itemIdx];
+
+  let quantity = +quantityField.innerText;
+  const price = item.price;
+
+  switch (type) {
+    case "minus":
+      if (quantity > 1) {
+        quantity--;
+      }
+      break;
+    case "plus":
+      quantity++;
+      break;
+    default:
+      break;
+  }
+
+  item.quantity = quantity;
+  cart.splice(itemIdx, 1, item);
+
+  quantityField.innerText = quantity;
+  totalPriceField.innerText = `총 ${quantity * price}원`;
+
+  localStorage.setItem("myCart", JSON.stringify(cart));
+  setOrderInfo();
+}
+```
+
+`document.querySelector`를 이용하여 data 어트리뷰트를 기준으로 요소를 찾을 수 있다. 인덱스를 이용하여 요소를 찾는 것보다 쉽게 코드를 작성할 수 있다.
+
+이러한 방식으로 이벤트 위임 방식이 필요한 부분은 모두 data 어트리뷰트를 사용하였다.
+
+[cart 코드](https://github.com/cozups/5ot/blob/master/src/views/cart/cart.js)
+
+[review 코드](https://github.com/cozups/5ot/blob/master/src/views/product-detail/review.js)
+
+[카테고리 관리 코드](https://github.com/cozups/5ot/blob/master/src/views/manage-category/manage-category.js)
+
+[제품 관리 코드](https://github.com/cozups/5ot/blob/master/src/views/manage-product/manage-product.js)
