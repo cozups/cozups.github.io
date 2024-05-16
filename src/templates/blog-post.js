@@ -11,7 +11,6 @@ const BlogPostTemplate = ({
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`;
   const tags = post.frontmatter.tags || [];
-  console.log(post);
 
   return (
     <Layout location={location} title={siteTitle}>

@@ -5,7 +5,7 @@ import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Categories from "../components/categories";
-import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
+import Pagination from "../components/pagination";
 
 const BlogListTemplate = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -24,13 +24,6 @@ const BlogListTemplate = ({ data, location, pageContext }) => {
       </Layout>
     );
   }
-
-  const prevPageDisabled = pageContext.currentPage === 1;
-  const nextPageDisabled = pageContext.currentPage === pageContext.numPages;
-  const pageNumberList = Array.from(
-    { length: pageContext.numPages < 10 ? pageContext.numPages : 10 },
-    (_, index) => Math.floor(pageContext.currentPage / 10) + index + 1
-  );
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -68,42 +61,7 @@ const BlogListTemplate = ({ data, location, pageContext }) => {
           );
         })}
       </ol>
-      <div className="pagination">
-        {
-          <Link
-            to={
-              pageContext.currentPage === 2
-                ? `/`
-                : `/page/${pageContext.currentPage - 1}`
-            }
-            className="text-black"
-          >
-            {!prevPageDisabled ? <MdArrowBackIosNew /> : ""}
-          </Link>
-        }
-        <ul className="list-none flex">
-          {pageNumberList.map(pageNumber => (
-            <li>
-              <Link
-                className={`pagination-item ${
-                  pageNumber === pageContext.currentPage && "page-activated"
-                }`}
-                to={pageNumber === 1 ? `/` : `/page/${pageNumber}`}
-              >
-                {pageNumber}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        {
-          <Link
-            to={`/page/${pageContext.currentPage + 1}`}
-            className="text-black"
-          >
-            {!nextPageDisabled ? <MdArrowForwardIos /> : ""}
-          </Link>
-        }
-      </div>
+      <Pagination pageContext={pageContext} />
     </Layout>
   );
 };

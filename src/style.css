@@ -329,3 +329,15 @@ tbody td {
 .pagination-item {
   @apply px-3 py-1;
 }
+
+.category-item {
+  @apply text-gray-600 bg-gray-100 px-2 py-1 rounded text-xs md:text-sm;
+}
+
+.category-item:hover {
+  @apply bg-gray-300 transition-colors duration-150 ease-in;
+}
+
+.category-item.active {
+  @apply bg-gray-300;
+}

@@ -27,6 +27,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             slug
           }
         }
+        categoryPosts: group(field: frontmatter___category) {
+          fieldValue
+          nodes {
+            id
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              date
+            }
+          }
+        }
       }
     }
   `);
@@ -81,11 +94,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 
   if (categories.length > 0) {
-    categories.forEach(category => {
-      createPage({
-        path: `/${category}/`,
-        component: categoryPosts,
-        context: { category },
+    const postGroups = result.data.allMarkdownRemark.categoryPosts;
+
+    postGroups.forEach(group => {
+      const category = group.fieldValue;
+      const posts = group.nodes;
+      const numPages = Math.ceil(posts.length / postsPerPage);
+
+      Array.from({ length: numPages }).forEach((_, i) => {
+        createPage({
+          path: i === 0 ? `/${category}/` : `/${category}/page/${i + 1}`,
+          component: categoryPosts,
+          context: {
+            category,
+            limit: postsPerPage,
+            skip: i * postsPerPage,
+            numPages,
+            currentPage: i + 1,
+          },
+        });
       });
     });
   }

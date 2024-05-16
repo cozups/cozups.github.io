@@ -5,6 +5,7 @@ import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Categories from "../components/categories";
+import Pagination from "../components/pagination";
 
 const CategoryPostsTemplate = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -17,8 +18,7 @@ const CategoryPostsTemplate = ({ data, location, pageContext }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title={`Posts in ${category}`} /> {/* 페이지 title 수정 */}
       <Bio />
-      <Categories categories={categories} />
-      <h3>{`Current: ${category}`}</h3> {/* 현재 카테고리 표시 */}
+      <Categories categories={categories} current={category} />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
@@ -56,6 +56,7 @@ const CategoryPostsTemplate = ({ data, location, pageContext }) => {
           );
         })}
       </ol>
+      <Pagination path={`/${category}`} pageContext={pageContext} />
     </Layout>
   );
 };
@@ -63,7 +64,7 @@ const CategoryPostsTemplate = ({ data, location, pageContext }) => {
 export default CategoryPostsTemplate;
 
 export const pageQuery = graphql`
-  query ($category: String!) {
+  query ($category: String!, $skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -78,6 +79,8 @@ export const pageQuery = graphql`
         order: [DESC, DESC]
       }
       filter: { frontmatter: { category: { eq: $category } } }
+      skip: $skip
+      limit: $limit
     ) {
       nodes {
         id
