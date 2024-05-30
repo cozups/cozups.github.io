@@ -15,13 +15,22 @@ module.exports = {
       summary: `Junior frontend developer`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    siteUrl: `https://cozups-log.netlify.app/`,
     social: {
       github: `https://github.com/cozups`,
     },
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://cozups-log.netlify.app`,
+        sitemap: `https://cozups-log.netlify.app/sitemap.xml`,
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
