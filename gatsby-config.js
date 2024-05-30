@@ -27,7 +27,7 @@ module.exports = {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: `https://cozups-log.netlify.app`,
-        sitemap: `https://cozups-log.netlify.app/sitemap.xml`,
+        sitemap: `https://cozups-log.netlify.app/sitemap-index.xml`,
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
