@@ -22,12 +22,12 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
-    `gatsby-plugin-advanced-sitemap`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
         host: `https://cozups-log.netlify.app`,
-        sitemap: `https://cozups-log.netlify.app/sitemap.xml`,
+        sitemap: `https://cozups-log.netlify.app/sitemap-index.xml`,
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
