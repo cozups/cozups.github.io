@@ -1,7 +1,7 @@
 ---
 title: "5ot 프로젝트 리팩토링"
 date: "2024-04-28"
-description: "프론트엔드 로드맵 - 인터넷 동작 원리 이해하기"
+description: "5ot 프로젝트를 다시 살펴보며 적어보는 리팩토링 로그"
 category: "Projects"
 tags: ["Refactoring"]
 ---
