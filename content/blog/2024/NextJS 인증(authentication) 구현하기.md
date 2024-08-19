@@ -139,7 +139,7 @@ form 자체는 useForm 훅을 이용하여 쉽게 만들 수 있었다.
 
 그리고 `NextAuth`라이브러리를 이용하여 인증을 시도했다. NextJS 공식 문서에서도 이 라이브러리를 쓰는 것을 권장하길래 사용해보았다.
 
-# 2. NextAuth 설정 및 사용용
+# 2. NextAuth 설정 및 사용
 
 ```ts
 import NextAuth, { NextAuthConfig } from "next-auth";
@@ -292,7 +292,8 @@ async session({ session, token }) {
 
 - Document에 따르면 JWT를 사용하여 데이터를 전달하고자 할 때, jwt 콜백에서 토큰에 데이터를 저장하고 session 콜백을 통해 브라우저에 데이터를 전달하라고 명시되어 있다.
 - 따라서 session 콜백에서는 token에 저장된 데이터를 세션에 반영하는 작업을 한다.
-  [NextAuth 설정 파일](https://github.com/cozups/sticker-diary/blob/master/src/auth.ts)
+
+[NextAuth 설정 파일](https://github.com/cozups/sticker-diary/blob/master/src/auth.ts)
 
 session update는 프로필 수정, 커스텀 스티커 수정 시 호출된다.
 
