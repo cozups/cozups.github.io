@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgatsby_starter_blog=self.webpackChunkgatsby_starter_blog||[]).push([[682],{5465:function(e,t,l){l.r(t),l.d(t,{Head:function(){return r}});var n=l(1883),a=l(7294);const r=()=>a.createElement("title",null,"About me");t.default=()=>a.createElement("main",null,a.createElement(n.Link,{to:"/"},"Home"),a.createElement("h1",null,"김미소 Miso Kim"),a.createElement("p",null,"안녕하세요. 프론트엔드 개발자가 되고 싶은 김미소입니다."))}}]);
+//# sourceMappingURL=component---src-pages-about-js-4a45d2020b42160aabef.js.map
