@@ -220,16 +220,12 @@ console.log(added); // { x: 1, y: 2, z: 0 }
 ```js
 // 스프레드 프로퍼티
 // 객체 병합, 프로퍼티가 중복되면 뒤에 있는 프로퍼티가 우선
-const merged = {...{ x: 1, y: 2 }, ...{ y: 10, z: 3 }};
-console.log(merged);  // { x: 1, y: 10, z: 3 }
+const merged = { ...{ x: 1, y: 2 }, ...{ y: 10, z: 3 } };
+console.log(merged); // { x: 1, y: 10, z: 3 }
 
 // 특정 프로퍼티 변경
-const changed = {...{ x: 1, y: 2 }, y: 100 };
-console.log(changed);  // { x: 1, y: 100 }
-
-// 프로퍼티 추가
-const added = {{ x: 1, y: 2 }, z: 0 };
-console.log(added);  // { x: 1, y: 2, z: 0 }
+const changed = { ...{ x: 1, y: 2 }, y: 100 };
+console.log(changed); // { x: 1, y: 100 }
 ```
 
 # Destructuring 할당
