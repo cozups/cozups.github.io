@@ -18,7 +18,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * Definition for a binary tree node.
    * function TreeNode(val, left, right) {
@@ -55,7 +55,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * Definition for a binary tree node.
    * function TreeNode(val, left, right) {
@@ -91,7 +91,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   var maxDepth = function (root) {
     if (!root) {
       return 0;
@@ -105,7 +105,7 @@ BFS로 푸는 방법도 있다.
 
 - 코드
 
-  ```jsx
+  ```js
   var maxDepth = function (root) {
     if (!root) {
       return 0;
@@ -137,7 +137,7 @@ BFS로 푸는 방법도 있다.
 
 - 코드
 
-  ```jsx
+  ```js
   var maxDepth = function (root) {
     if (!root) {
       return 0;
@@ -176,7 +176,7 @@ BFS로 푸는 방법도 있다.
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * Definition for a binary tree node.
    * function TreeNode(val, left, right) {
@@ -214,7 +214,7 @@ subtree로 주어진 트리가 tree의 서브트리인지 확인하는 문제
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * Definition for a binary tree node.
    * function TreeNode(val, left, right) {
@@ -272,7 +272,7 @@ subtree로 주어진 트리가 tree의 서브트리인지 확인하는 문제
   - 위의 두 가지 경우는 lowest가 아닐 수 있음
 - 코드
 
-  ```jsx
+  ```js
   /**
    * Definition for a binary tree node.
    * function TreeNode(val) {
@@ -314,7 +314,7 @@ level order이므로 BFS를 이용한다.
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * Definition for a binary tree node.
    * function TreeNode(val, left, right) {
@@ -376,7 +376,7 @@ level order이므로 BFS를 이용한다.
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * Definition for a binary tree node.
    * function TreeNode(val, left, right) {

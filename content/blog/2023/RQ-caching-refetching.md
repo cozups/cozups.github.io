@@ -29,10 +29,10 @@ React 애플리케이션에서 Data fetching을 위한 라이브러리
 
 # 2. React Query 사용하기 - QueryClientProvider, QueryClient
 
-```jsx
+```js
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import App from "./App.js";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
@@ -60,7 +60,7 @@ React query를 사용하기 위해서는 redux에서 Provider 컴포넌트를 �
 
 React query 없이 기존의 방식으로 데이터를 가져오려면 useEffect와 useState를 이용하여 사이드 이펙트(데이터 가져오기)를 실행하고 상태에 저장해야 했다.
 
-```jsx
+```js
 ...
 export const SuperHeroesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -78,7 +78,7 @@ export const SuperHeroesPage = () => {
 
 그러나 React query가 제공하는 useQuery를 사용하면 훨씬 간결한 코드로 데이터를 가져올 수 있다.
 
-```jsx
+```js
 ...
 export const RQSuperHeroesPage = () => {
   const { isLoading, data, isError, error } = useQuery({
@@ -114,7 +114,7 @@ useQuery가 반환하는 것들은 여러 개가 있는데
 
 useQuery를 사용하면 위의 스크린샷의 프로퍼티들 중 isError와 error를 사용하여 간단하게 에러핸들링을 할 수 있다.
 
-```jsx
+```js
 import axios from "axios";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -162,7 +162,7 @@ React query는 데이터의 캐싱을 지원한다. 기본적으로 5분의 캐�
 
 React query V3에서는 cacheTime이라는 이름으로 사용되었으나 최신 버전에서는 gcTime으로 사용된다.
 
-```jsx
+```js
 const { isLoading, data, isError, error, isFetching } = useQuery({
   queryKey: ["super-heroes"],
   queryFn: () => {
@@ -180,7 +180,7 @@ const { isLoading, data, isError, error, isFetching } = useQuery({
 
 백그라운드에서 데이터를 다시 가져오는 횟수를 줄이기 위해 사용된다. 자주 바뀌지 않는 데이터라면 staleTime을 조절하여 불필요한 refetching을 줄일 수 있다.
 
-```jsx
+```js
 const { isLoading, data, isError, error, isFetching } = useQuery({
   queryKey: ["super-heroes"],
   queryFn: () => {
@@ -218,7 +218,7 @@ const { isLoading, data, isError, error, isFetching } = useQuery({
 
 - default: false
 
-```jsx
+```js
 const { isLoading, data, isError, error, isFetching } = useQuery({
   queryKey: ["super-heroes"],
   queryFn: () => {
@@ -240,7 +240,7 @@ const { isLoading, data, isError, error, isFetching } = useQuery({
   - 자동으로 데이터 가져오기 비활성화
 - useQuery가 반환하는 refetch 함수를 활용한다.
 
-```jsx
+```js
 const { isLoading, data, isError, error, isFetching, refetch } = useQuery({
   queryKey: ['super-heroes'],
   queryFn: () => {
@@ -268,7 +268,7 @@ return (
 
 서버로부터 데이터를 받아 컴포넌트가 사용할 수 있는 형태로 데이터를 변환해야할 때가 있다. 그럴 경우 제일 많이 사용하던 방법이 렌더링 할 때 데이터에 map이나 filter 메서드를 사용하여 데이터의 일부를 추출하는 것이었다.
 
-```jsx
+```js
 import axios from 'axios';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -298,7 +298,7 @@ export const RQSuperHeroesPage = () => {
 
 useQuery의 select 옵션을 사용하면 데이터의 일부를 추출하거나 필터링하는 등 데이터를 변형할 수 있다. 변형된 결과는 useQuery가 반환하는 data 변수에 반환된다.
 
-```jsx
+```js
 import axios from 'axios';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';

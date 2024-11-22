@@ -16,7 +16,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {number[]} prices
    * @return {number}
@@ -54,7 +54,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {string} s
    * @return {number}
@@ -95,7 +95,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {string} s
    * @param {number} k

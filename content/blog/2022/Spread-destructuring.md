@@ -16,7 +16,7 @@ rest 파라미터와 혼동할 수 있지만 rest 파라미터는 `...` 을 이�
 
 `for...of` 문으로 순회할 수 있는 이터러블(**Array, String, Map, Set, DOM 컬렉션, arguments**)을 대상으로 한정
 
-```jsx
+```js
 console.log(...[1, 2, 3]);  // 1 2 3
 
 console.log(...'Hello');  // H e l l o
@@ -30,7 +30,7 @@ console.log(...{a: 1, b: 2});
 
 ⚠ **스프레드 문법의 결과는 값이 아니라 값들의 목록이므로 변수에 할당할 수 없다.**
 
-```jsx
+```js
 const list = ...[1, 2, 3];  // SyntaxError: Unexpected token ...
 ```
 
@@ -40,7 +40,7 @@ const list = ...[1, 2, 3];  // SyntaxError: Unexpected token ...
 
 배열을 펼쳐서 개별 값들의 목록으로 만든 후, 함수의 인수 목록으로 전달
 
-```jsx
+```js
 const arr = [1, 2, 3];
 
 // Math.max()는 여러 개의 숫자를 인수로 전달 받아 최대값을 반환하는 가변 인자 함수
@@ -51,7 +51,7 @@ const max = Math.max(...arr); // -> 1, 2, 3으로 펼쳐서 Math.max()에 전달
 
 스프레드 문법 이전에는 Function.prototype.apply를 이용하여 배열을 펼쳐 인수로 전달함.
 
-```jsx
+```js
 var arr = [1, 2, 3];
 
 // apply의 두번째 인수는 apply함수가 호출하는 함수의 인수 목록
@@ -64,12 +64,12 @@ var max = Math.max.apply(null, arr); // 배열이 펼쳐져서 인수로 전달�
 
 #### 1. concat
 
-```jsx
+```js
 // ES5
 var arr = [1, 2].concat([3, 4]);
 ```
 
-```jsx
+```js
 // ES6
 const arr = [...[1,2], ...[3, 4]);
 ```
@@ -78,7 +78,7 @@ ES5에서 concat 메서드를 이용하여 배열을 결합한 것을 스프레�
 
 #### 2. splice
 
-```jsx
+```js
 // ES5
 var arr1 = [1, 4];
 var arr2 = [2, 3];
@@ -91,7 +91,7 @@ arr1.splice(1, 0, arr2); // NO! arr2 배열 자체가 들어가므로 [1, [2, 3]
 Array.prototype.apply(arr1, [1, 0].concat(arr2));
 ```
 
-```jsx
+```js
 // ES6
 const arr1 = [1, 4];
 const arr2 = [2, 3];
@@ -101,7 +101,7 @@ arr1.splice(1, 0, ...arr2);
 
 #### 3. 배열 복사
 
-```jsx
+```js
 // ES5
 var origin = [1, 2];
 var copy = origin.slice();
@@ -110,7 +110,7 @@ console.log(copy); // [1, 2]
 console.log(copy === origin); // false
 ```
 
-```jsx
+```js
 // ES6
 const origin = [1, 2];
 const copy = [...origin];
@@ -128,7 +128,7 @@ console.log(copy === origin); // false
 
 #### 4. 이터러블을 배열로 변환
 
-```jsx
+```js
 // ES5
 // 이터러블이면서 유사 배열 객체
 // Function.prototype.call 또는 Function.prototype.apply 메서드를 사용하여 slice 호출
@@ -154,7 +154,7 @@ const arr = Array.prototype.slice.call(ArrayLike); // -> [1, 2, 3]
 console.log(Array.isArray(arr)); // true
 ```
 
-```jsx
+```js
 // ES6
 // 1. 이터러블이면서 유사 배열 객체인 arguments를 배열로 변환
 function sum() {
@@ -188,7 +188,7 @@ Array.from(arrayLike); // -> [1, 2, 3]
 
 스프레드 문법의 대상은 이터러블이어야 하지만 스프레드 프로퍼티 제안으로 인해 일반 객체를 대상으로도 스프레드 문법을 사용할 수 있다.
 
-```jsx
+```js
 // 스프레드 프로퍼티
 // 객체 복사
 const obj = { x: 1, y: 2 };
@@ -203,7 +203,7 @@ console.log(merged); // {x: 1, y: 2, a: 3, b: 4}
 
 스프레드 프로퍼티 제안 이전에는 Object.assign 메서드를 이용하여 객체를 병합하거나 프로퍼티를 변경, 추가하였다.
 
-```jsx
+```js
 // 객체 병합, 프로퍼티가 중복되면 뒤에 있는 프로퍼티가 우선
 const merged = Object.assign({}, { x: 1, y: 2 }, { y: 10, z: 3 });
 console.log(merged); // { x: 1, y: 10, z: 3 }
@@ -217,7 +217,7 @@ const added = Object.assign({}, { x: 1, y: 2 }, { z: 0 });
 console.log(added); // { x: 1, y: 2, z: 0 }
 ```
 
-```jsx
+```js
 // 스프레드 프로퍼티
 // 객체 병합, 프로퍼티가 중복되면 뒤에 있는 프로퍼티가 우선
 const merged = {...{ x: 1, y: 2 }, ...{ y: 10, z: 3 }};
@@ -241,7 +241,7 @@ console.log(added);  // { x: 1, y: 2, z: 0 }
 
 ## 1. 배열 디스트럭처링 할당
 
-```jsx
+```js
 // ES5
 var arr = [1, 2, 3];
 
@@ -259,7 +259,7 @@ console.log(one, two, three); // 1 2 3
 
 1. 할당 연산자 왼쪽은 배열 리터럴 형태로 선언해야 한다.
 
-```jsx
+```js
 const arr = [1, 2, 3];
 
 const [one, two, three] = arr;
@@ -268,7 +268,7 @@ console.log(one, two, three); // 1 2 3
 
 2. 우변에 이터러블을 할당하지 않으면 에러가 발생한다.
 
-```jsx
+```js
 const [x, y];  // SyntaxError: Missing initializer in destructuring declaration
 
 const [a, b] = {};  // TypeError: {} is not iterable
@@ -276,7 +276,7 @@ const [a, b] = {};  // TypeError: {} is not iterable
 
 3. 배열 디스트럭처링 할당의 기준은 배열의 인덱스이므로 순서대로 할당하고, 변수의 개수가 이터러블 요소 개수와 일치할 필요는 없다.
 
-```jsx
+```js
 const [a, b] = [1, 2];
 console.log(a, b); // 1 2
 
@@ -292,7 +292,7 @@ console.log(g, h); // 1 3
 
 4. 배열 디스트럭처링 할당을 위한 변수에 기본값을 설정할 수 있다.
 
-```jsx
+```js
 const [a, b, c = 3] = [1, 2];
 console.log(a, b, c); // 1 2 3
 
@@ -303,14 +303,14 @@ console.log(e, f, g); // 1 2 3
 
 5. 배열 디스트럭처링 할당을 위한 변수에 rest 요소를 사용할 수 있다.
 
-```jsx
+```js
 const [x, ...y] = [1, 2, 3];
 console.log(x, y); // 1 [2, 3]
 ```
 
 ## 2. 객체 디스트럭처링 할당
 
-```jsx
+```js
 // ES5
 var user = { firstName: "cozups", lastName: "Kim" };
 
@@ -327,7 +327,7 @@ console.log(firstName, lastName); // cozups Kim
 
 1. 할당 연산자 왼쪽은 객체 리터럴 형태로 선언해야 한다.
 
-```jsx
+```js
 const user = { firstName: "cozups", lastName: "Kim" };
 
 const { lastName, firstName } = user;
@@ -336,7 +336,7 @@ console.log(firstName, lastName); // cozups Kim
 
 2. 우변에 객체 또는 객체로 평가될 수 있는 표현식(문자열, 숫자, 배열 등)을 할당하지 않으면 에러가 발생한다.
 
-```jsx
+```js
 const {lastName, firstName};
 // SyntaxError: Missing initializer in destructuring declaration
 
@@ -346,7 +346,7 @@ cosnt {lastName, firstName} = null;
 
 3. 객체의 프로퍼티 키와 다른 변수 이름으로 프로퍼티 값을 할당받으려면 다음과 같이 변수를 선언하면 된다.
 
-```jsx
+```js
 const user = { firstName: "cozups", lastName: "Kim" };
 
 const { lastName: ln, firstName: fn } = user;
@@ -355,7 +355,7 @@ console.log(fn, ln); // cozups Kim
 
 4. 객체 디스트럭처링 할당을 위한 변수에 기본값을 설정할 수 있다.
 
-```jsx
+```js
 const { firstName = "cozups", lastName } = { lastName: "Kim" };
 console.log(firstName, lastName); // cozups Kim
 
@@ -365,7 +365,7 @@ console.log(fn, ln); // cozups Kim
 
 5. 객체 디스트럭처링 할당을 위한 변수에 rest 프로퍼티를 사용할 수 있다.
 
-```jsx
+```js
 const { x, ...rest } = { x: 1, y: 2, z: 3 };
 console.log(x, rest); // 1 {y: 2, z: 3}
 ```
@@ -374,7 +374,7 @@ console.log(x, rest); // 1 {y: 2, z: 3}
 
 1. 필요한 프로퍼티 값만 추출하여 변수에 할당
 
-```jsx
+```js
 const str = "Hello";
 // String 래퍼 객체로부터 length 프로퍼티만 추출
 const { length } = str;
@@ -388,7 +388,7 @@ console.log(id); // 1
 
 2. 객체를 인수로 전달받는 함수의 매개변수로 사용
 
-```jsx
+```js
 function printTodo(todo) {
   console.log(
     `할일 ${todo.content}은 ${todo.completed ? "완료" : "비완료"} 상태입니다.`
@@ -398,7 +398,7 @@ function printTodo(todo) {
 printTodo({ id: 1, content: "html", completed: true }); // 할일 html을 완료 상태입니다.
 ```
 
-```jsx
+```js
 function printTodo({ content, completed }) {
   console.log(`할일 ${content}은 ${completed ? "완료" : "비완료"} 상태입니다.`);
 }
@@ -408,7 +408,7 @@ printTodo({ id: 1, content: "html", completed: true });
 
 3. 배열의 요소가 객체인 경우에 배열 디스트럭처링 할당과 객체 디스트럭처링 할당을 혼용할 수 있다.
 
-```jsx
+```js
 const todos = [
   { id: 1, content: "html", completed: true },
   { id: 2, content: "css", completed: false },
@@ -422,7 +422,7 @@ console.log(id); // 2
 
 중첩 객체의 경우,
 
-```jsx
+```js
 const user = {
   name: "Lee",
   address: {

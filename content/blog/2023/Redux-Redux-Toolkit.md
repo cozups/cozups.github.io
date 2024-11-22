@@ -33,7 +33,7 @@ Redux Toolkit은 이러한 **복잡한 셋업과정을 단순화 하고 유용�
 
 Redux Toolkit에서는 state를 기능적 단위로 잘라 slice로 관리한다.
 
-```jsx
+```js
 const initialState = {
   numOfCakes: 10,
 };
@@ -52,7 +52,7 @@ const cakeSlice = createSlice({
 });
 ```
 
-```jsx
+```js
 const initialState = {
   numOfIceCreams: 20,
 };
@@ -103,7 +103,7 @@ configureStore 함수는 **기본적으로 redux devtools extension을 지원**�
 
 뿐만 아니라, 여러 개의 리듀서를 사용하기 위해서는 `combineReducer`함수를 사용해야 했다. 그러나 configureStore 함수를 사용하면 **별도의 함수 없이 여러 개의 리듀서를 사용**할 수 있다.
 
-```jsx
+```js
 const store = configureStore({
   reducer: {
     cake: cakeReducer,
@@ -120,7 +120,7 @@ const store = configureStore({
 
 Redux Toolkit 에서는 configureStore 함수 내에 middleware 프로퍼티에 사용할 미들웨어를 추가하여 미들웨어를 사용할 수 있다.
 
-```jsx
+```js
 const store = configureStore({
   reducer: {
     cake: cakeReducer,
@@ -144,7 +144,7 @@ Redux Toolkit의 슬라이스는 그 슬라이스에서 만들어 낸 액션에 
 
 Redux에서는 reducer 함수의 switch문에 케이스를 단순히 추가하면 됐다. 그러나 Redux Toolkit에서는 액션과 리듀서를 자동으로 생성하므로 개발자가 직접 케이스를 추가하는 방법을 사용하기 위해서는 다른 방법을 사용해야 한다. 이 때 사용하는 것이 `extraReducers`이다.
 
-```jsx
+```js
 const iceCreamSlice = createSlice({
   name: "iceCream",
   initialState,
@@ -175,7 +175,7 @@ builder는 Redux Toolkit에서 사용되는 개념으로, extraReducers 프로�
 
 Redux에서 비동기 작업을 하기 위해서는 redux-thunk 라이브러리를 별도로 설치해야 했다. 그러나 Redux Toolkit에서는 `createAsyncThunk`라는 함수를 기본으로 제공하여 비동기 작업을 처리할 수 있도록 해준다.
 
-```jsx
+```js
 // generates pending, fulfilled and rejected action types
 const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
   return axios

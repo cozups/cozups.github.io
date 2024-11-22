@@ -133,7 +133,7 @@ console.log(mySize); // 2
 
 위 코드를 컴파일 한 자바스크립트 코드는
 
-```jsx
+```js
 var Size;
 (function (Size) {
   Size[(Size["Small"] = 1)] = "Small";
@@ -158,7 +158,7 @@ console.log(mySize);
 
 `const` 키워드를 이용하면 코드가 간결해진다.
 
-```jsx
+```js
 let mySize = 2;
 console.log(mySize);
 ```

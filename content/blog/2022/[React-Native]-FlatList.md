@@ -18,7 +18,7 @@ tags: ["React Native"]
 
 # FlatList 사용법
 
-```jsx
+```js
 import { View, FlatList } from 'react-native`;
 
 const dataToRendered = [ elem1, elem2, ... ];

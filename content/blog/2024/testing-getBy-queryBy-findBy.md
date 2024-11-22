@@ -58,7 +58,7 @@ getBy, queryBy, findBy에 대해 알아보자.
   - `timeout` 옵션을 따로 설정하지 않은 경우, 1000ms 내에 찾지 못하면 실패
   - 이 경우 `findAllBy`를 사용
 
-```jsx
+```js
 test("Start Learning button is eventually displayed", async () => {
   render(<Skills skills={skills} />);
   const startLearningButton = await screen.findByRole("button", {

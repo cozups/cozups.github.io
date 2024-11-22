@@ -65,7 +65,7 @@ You should ask yourself: "Can I pre-render this page **ahead** of a user's req
 
 ### getStaticProps()
 
-```jsx
+```js
 export async function getStaticProps() {
   // Get external data from the file system, API, DB, etc.
   const data = ...
@@ -82,7 +82,7 @@ build time에 실행된다.
 
 기본 형태는 위와 같이 사용한다.
 
-```jsx
+```js
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
   return {
@@ -97,7 +97,7 @@ export async function getStaticProps() {
 
 따라서 해당 컴포넌트에서 `props.allPostsData`를 통해 사용할 수 있다.
 
-```jsx
+```js
 export default function Home ({ allPostsData }) { ... }
 ```
 
@@ -113,7 +113,7 @@ getStaticProps는 클라이언트 사이드 코드는 실행하지 않고 **서�
 
 ### getServerSideProps
 
-```jsx
+```js
 export async function getServerSideProps(context) {
   return {
     props: {
@@ -156,7 +156,7 @@ ex) pages/posts/[id].js
 
 - 동적 라우트 경로로 들어갈 값에 대한 리스트를 반환해야한다.
 
-```jsx
+```js
 export async function getStaticPaths() {
   // Return a list of possible value for id
 }
@@ -180,7 +180,7 @@ export async function getStaticPaths() {
 
 데이터를 가져와야 할 때 getStaticProps 함수에서 params 매개변수를 통해 id 값을 추출할 수 있다.
 
-```jsx
+```js
 export async function getStaticProps({ params }) {
   // Fetch necessary data for the blog post using params.id
   const postId = params.id;
@@ -195,7 +195,7 @@ ex) pages/posts/[…id].js → `/posts/a`, `/posts/a/b`, `/posts/a/b/c`
 
 이 경우, getStaticPaths는 다음과 같은 배열을 반환해야 한다.
 
-```jsx
+```js
 return [
   {
     params: {
@@ -209,7 +209,7 @@ return [
 
 getStaticProps의 params는
 
-```jsx
+```js
 export async function getStaticProps({ params }) {
   // params.id will be like ['a', 'b', 'c']
 }
@@ -219,7 +219,7 @@ export async function getStaticProps({ params }) {
 
 Next.js의 router를 사용하고 싶다면 `useRouter` 훅을 사용하면 된다.
 
-```jsx
+```js
 import { useRouter } from "next/router";
 ```
 
@@ -235,7 +235,7 @@ API Routes는 Next.js 앱 내에 API 엔드포인트를 생성한다.
 
 `pages/api` 디렉토리에 함수를 작성하여 사용할 수 있다.
 
-```jsx
+```js
 // req = HTTP incoming message, res = HTTP server response
 export default function handler(req, res) {
   // ...
@@ -255,7 +255,7 @@ export default function handler(req, res) {
 
 `pages/api/post/[pid].js` 파일이 있다고 했을 때
 
-```jsx
+```js
 export default function handler(req, res) {
   const { pid } = req.query;
   res.end(`Post: ${pid}`);
@@ -268,7 +268,7 @@ req.query를 참조하여 pid 값을 추출할 수 있다.
 
 `pages/api/post/[...slug].js` → `/api/post/a`, `/api/post/a/b`, `/api/post/a/b/c`
 
-```jsx
+```js
 export default function handler(req, res) {
   const { slug } = req.query;
   res.end(`Post: ${slug.join(", ")}`);

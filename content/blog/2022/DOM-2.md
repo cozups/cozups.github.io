@@ -19,7 +19,7 @@ DOM 조작에 의해 DOM에 새로운 노드가 추가되거나 삭제되면 리
 - 요소 노드의 HTML 마크업을 취득하거나 변경한다.
 - 요소 노드의 innerHTML 프로퍼티를 참조하면 요소 노드의 콘텐츠 영역 내에 포함된 모든 HTML 마크업을 문자열로 반환한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -41,7 +41,7 @@ DOM 조작에 의해 DOM에 새로운 노드가 추가되거나 삭제되면 리
 
 해커가 사용자의 정보를 탈취하거나 자동으로 비정상적인 기능을 수행하게 할 수 있다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -61,14 +61,14 @@ DOM 조작에 의해 DOM에 새로운 노드가 추가되거나 삭제되면 리
 
 `DOMPurify`는 잠재적 위험을 내포한 HTML 마크업을 새니티제이션하여 잠재적 위험을 제거한다.
 
-```jsx
+```js
 DOMPurify.sanitize('<img src="x" onerror="alert(document.cookie)">');
 // => <img src="x">
 ```
 
 innerHTML 프로퍼티에 HTML 마크업 문자열을 할당하는 경우 요소 노드의 모든 자식 노드를 제거하고 할당한 HTML 마크업 문자열을 파싱하여 DOM을 변경한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -89,7 +89,7 @@ innerHTML 프로퍼티에 HTML 마크업 문자열을 할당하는 경우 요소
 
 innerHTML 프로퍼티는 새로운 요소를 삽입할 때 삽입될 위치를 지정할 수 없다.
 
-```jsx
+```js
 <ul id="fruits">
   <li class="apple">Apple</li>
   <li class="orange">Orange</li>
@@ -112,7 +112,7 @@ li.apple과 li.orange 사이에 요소를 추가할 수 없다.
 
 ## 3. 노드 생성과 추가
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -155,7 +155,7 @@ DOM은 노드를 직접 생성/삽입/삭제/치환하는 메서드도 제공한
 
 ## 4. 복수의 노드 생성과 추가
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -185,7 +185,7 @@ DOM은 노드를 직접 생성/삽입/삭제/치환하는 메서드도 제공한
 
 DOM을 여러 번 변경하는 문제를 회피하기 위해 컨테이너 요소를 사용할 수 있다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -253,7 +253,7 @@ DOM을 여러 번 변경하는 문제를 회피하기 위해 컨테이너 요소
 
 이미 존재하는 노드를 `appendChild` 또는 `insertBefore` 메서드를 사용하여 DOM에 다시 추가하면 노드가 이동한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -307,7 +307,7 @@ DOM을 여러 번 변경하는 문제를 회피하기 위해 컨테이너 요소
 
 HTML 어트리뷰트는 HTML 요소의 시작 태그에 `어트리뷰트 이름="어트리뷰트 값"` 형식으로 정의한다.
 
-```jsx
+```js
 <input id="user" type="text" value="HELLO">
 ```
 
@@ -324,7 +324,7 @@ HTML 문서가 파싱될 때 HTML 요소의 어트리뷰트는 어트리뷰트 �
 
 attributes 프로퍼티는 getter만 존재하는 접근자 프로퍼티이다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -350,7 +350,7 @@ attributes 프로퍼티는 getter만 존재하는 읽기 전용 접근자 프로
 
 `Element.prototype.getAttribute/setAttribute` 메서드를 사용하면 attributes 프로퍼티를 통하지 않고 직접 HTML 어트리뷰트 값을 취득하거나 변경할 수 있다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -391,7 +391,7 @@ HTML 어트리뷰트는 DOM에서 중복 관리되고 있는 것처럼 보인다
 
 그러나 **HTML 어트리뷰트의 역할은 HTML 요소의 초기 상태를 지정하는 것**이다.
 
-```jsx
+```js
 <input id="user" type="text" value="HELLO">
 ```
 
@@ -418,7 +418,7 @@ input 요소의 value 어트리뷰트는 어트리뷰트 노드로 변환되어 
 
 사용자의 입력에 의한 상태 변화에 반응하여 언제나 최신 상태를 유지한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -470,7 +470,7 @@ data 어트리뷰트의 값은 HTMLElement.dataset 프로퍼티로 취득할 수
 
 dataset 프로퍼티는 HTML 요소의 모든 data 어트리뷰트 정보를 제공하는 DOMStringMap 객체를 반환한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -509,7 +509,7 @@ dataset 프로퍼티에 카멜케이스 형식으로 추가한 프로퍼티 키(
 
 `HTMLElement.prototype.style` 프로퍼티는 setter와 getter 모두 존재하는 접근자 프로퍼티로서 요소 노드의 **인라인 스타일**을 취득하거나 추가 또는 변경한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -537,7 +537,7 @@ dataset 프로퍼티에 카멜케이스 형식으로 추가한 프로퍼티 키(
   - ‘background-color’ → ‘backgroundColor’
 - 케밥 케이스를 그대로 사용하려면 대괄호 표기법 사용
 
-```jsx
+```js
 $div.style["background-color"] = "yellow";
 ```
 
@@ -556,7 +556,7 @@ class 어트리뷰트에 대응하는 DOM 프로퍼티는 className과 classList
 
 className 프로퍼티는 문자열을 반환하므로 공백으로 구분된 여러 개의 클래스를 반환하는 경우 다루기가 불편하다.
 
-```jsx
+```js
 console.log($box.className); // 'box red'
 ```
 
@@ -566,7 +566,7 @@ console.log($box.className); // 'box red'
 
 DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는 컬렉션 객체로서 유사 배열 객체이면서 이터러블이다.
 
-```jsx
+```js
 console.log($box.classList);
 // DOMTokenList(2) [length: 2,  value: "box blue", 0: "box", 1: "blue"]
 ```
@@ -587,13 +587,13 @@ DOMTokenList 객체가 제공하는 유용한 메서드
 - toggle(className[, force])
   - 인수로 전달한 문자열과 일치하는 클래스가 존재하면 제거하고, 존재하지 않으면 추가한다.
   - force: 불리언 값으로 평가되는 조건식 전달
-    ```jsx
+    ```js
     // class 어트리뷰트에 강제로 'foo' 클래스를 추가
     $box.classList.toggle("foo", true); // -> class="box blue foo"
     // class 어트리뷰트에서 강제로 'foo' 클래스를 제거
     $box.classList.toggle("foo", false); // -> class="box blue"
     ```
-    ```jsx
+    ```js
     span.classList.toggle("c", window.innerWidth > 1000);
     ```
     브라우저 윈도우 크기가 1000픽셀 이상일 때만 추가된다.
@@ -605,7 +605,7 @@ style 프로퍼티는 인라인 스타일만 반환하여, 클래스를 적용�
 
 `window.getComputedStyle(element[, pseudo])` 메서드는 인수로 전달한 element 요소 노드에 적용되어 있는 스타일을 CSSStyleDeclaration 객체에 담아 반환한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <head>
@@ -648,7 +648,7 @@ style 프로퍼티는 인라인 스타일만 반환하여, 클래스를 적용�
 
 두 번째 인수 pseudo로 :after, :before와 같은 의사 요소를 지정하는 문자열을 전달할 수 있다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <head>

@@ -25,7 +25,7 @@ tags: ["React", "원티드 프리온보딩 챌린지"]
 
 VirtualDOM Tree에서 `<div id=”root” />`를 나타내는 node를 생성한다.
 
-```jsx
+```js
 const root = createRoot(domNode, options?)
 ```
 
@@ -38,7 +38,7 @@ const root = createRoot(domNode, options?)
 
 사용 예시
 
-```jsx
+```js
 import { createRoot } from "react-dom/client";
 
 const root = createRoot(document.getElementById("root"));
@@ -106,7 +106,7 @@ Virtual DOM에 업데이트된 내용이 실제 DOM에 반영되고 브라우저
 
 ### render 효율을 위해…
 
-- 불필요한 jsx element를 없애는 것이 좋음
+- 불필요한 js element를 없애는 것이 좋음
   - diffing시 모든 노드를 순회하기 때문
 - key를 잘 지정해줘야 함
   - key 없이 리스트 앞에 요소 넣기 x

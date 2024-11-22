@@ -10,7 +10,7 @@ tags: ["React", "React Query"]
 
 React Query에서는 useQuery를 여러 개 쓰는 것 만으로도 병렬적인 쿼리가 가능하다.
 
-```jsx
+```js
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
@@ -49,7 +49,7 @@ export const ParallelQueriesPage = () => {
 
 동적으로 쿼리를 해야할 때는 `useQueries`를 사용할 수 있다.
 
-```jsx
+```js
 import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
@@ -113,7 +113,7 @@ useQueries의 queries 안에 쿼리할 내용들을 배열로서 넘겨주면 �
 
 이렇게 두 번의 쿼리가 필요하다.
 
-```jsx
+```js
 const { data: user } = useQuery({
   queryKey: ["user", email],
   queryFn: () => fetchUserByEmail(email),
@@ -125,7 +125,7 @@ const channelId = user?.data.channelId;
 
 channelId 변수는 user가 존재할 때만 할당된다.
 
-```jsx
+```js
 const { data: courses } = useQuery({
   queryKey: ["courses", channelId],
   queryFn: () => fetchCoursesByChannelId(channelId),
@@ -151,7 +151,7 @@ UI에 데이터를 렌더링할 때, 새로 쿼리를 할 필요없이 **이전�
 
 이런 경우 useQuery의 initialData 옵션을 사용하면 로딩 표시 없이 데이터를 미리 표시할 수 있다.
 
-```jsx
+```js
 useQuery({
   queryKey: ["super-hero", heroId],
   queryFn: fetchSuperHero,
@@ -183,7 +183,7 @@ useQuery({
 
 페이지네이션 된 데이터를 불러오고 UI에 렌더링하는 것 자체는 간단하다.
 
-```jsx
+```js
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
@@ -250,7 +250,7 @@ initialData와 비슷하게 서버에서 데이터를 가져오기 전에 사용
 
 ‘Load More’ 버튼을 눌러서 계속 데이터를 요청하거나 무한 스크롤을 구현할 경우 react query가 제공하는 `useInfiniteQuery`를 이용하면 된다.
 
-```jsx
+```js
 import React, { Fragment } from "react";
 import axios from "axios";
 import { useInfiniteQuery } from "@tanstack/react-query";

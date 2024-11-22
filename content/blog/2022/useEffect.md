@@ -35,7 +35,7 @@ effect함수가 실행되는 시점에는 DOM 렌더링이 완료되었다는 �
 
 말 그대로 정리 함수
 
-```jsx
+```js
 import React, { useState, useEffect } from "react";
 
 function FriendStatus(props) {

@@ -58,7 +58,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 ## 1. 함수 선언문
 
-```jsx
+```js
 // 함수 선언문
 function add(x, y) {
   return x + y;
@@ -75,7 +75,7 @@ console.log(add(2, 5)); // 7
 
 함수 선언문은 함수 리터럴과 형태가 동일하지만 **함수 이름을 생략할 수 없다**.
 
-```jsx
+```js
 // 함수 선언문은 함수 이름을 생략할 수 없다.
 function (x, y) {
   return x + y;
@@ -85,7 +85,7 @@ function (x, y) {
 
 함수 선언문은 **표현식이 아닌 문**이므로 변수에 할당할 수 없다.
 
-```jsx
+```js
 // 함수 선언문은 표현식이 아닌 문이므로 변수에 할당할 수 없다.
 // 하지만 함수 선언문이 변수에 할당되는 것처럼 보인다.
 var add = function add(x, y) {
@@ -118,7 +118,7 @@ console.log(add(2, 5)); // 7
 
 자바스크립트의 함수는 일급 객체이므로 함수 리터럴로 생성한 함수 객체를 변수에 할당할 수 있다.
 
-```jsx
+```js
 // 함수 표현식
 var add = function (x, y) {
   return x + y;
@@ -133,7 +133,7 @@ console.log(add(2, 5)); // 7
 
 함수 이름은 함수 몸체 내부에서만 유효한 식별자다.
 
-```jsx
+```js
 // 기명 함수 표현식
 var add = function foo(x, y) {
   return x + y;
@@ -151,7 +151,7 @@ console.log(foo(2, 5)); // ReferenceError: foo is not defined
 
 ## 3. 함수 생성 시점과 호이스팅
 
-```jsx
+```js
 // 함수 참조
 console.dir(add); // ƒ add(x, y)
 console.dir(sub); // undefined
@@ -194,7 +194,7 @@ new 연산자 없이 호출해도 결과는 동일하다.
 
 Function 생성자 함수로 생성한 함수는 클로저를 생성하지 않는 등, 함수 선언문이나 함수 표현식으로 생성한 함수와 다르게 동작한다.
 
-```jsx
+```js
 var add1 = (function () {
   var a = 10;
   return function (x, y) {
@@ -218,7 +218,7 @@ ES6에서 도입된 화살표 함수는 function 키워드 대신 화살표 `=>`
 
 항상 익명 함수로 정의한다.
 
-```jsx
+```js
 // 화살표 함수
 const add = (x, y) => x + y;
 console.log(add(2, 5)); // 7
@@ -251,7 +251,7 @@ console.log(add(2, 5)); // 7
 
 - 함수 몸체 내에서 인수의 타입을 체크한다.
 
-  ```jsx
+  ```js
   function add(x, y) {
     if (typeof x !== "number" || typeof y !== "number") {
       // 매개변수를 통해 전달된 인수의 타입이 부적절한 경우 에러를 발생시킨다.
@@ -268,7 +268,7 @@ console.log(add(2, 5)); // 7
 - 타입스크립트와 같이 정적 타입을 선언할 수 있는 자바스크립트의 상위 확장을 도입한다.
 - 단축 평가를 사용해 매개변수에 기본값을 할당한다.
 
-  ```jsx
+  ```js
   function add(a, b, c) {
     a = a || 0;
     b = b || 0;
@@ -284,7 +284,7 @@ console.log(add(2, 5)); // 7
 
 - 매개변수 기본값을 지정한다.
 
-  ```jsx
+  ```js
   function add(a = 0, b = 0, c = 0) {
     return a + b + c;
   }
@@ -324,7 +324,7 @@ return 키워드와 표현식(반환값)으로 이루어진 반환문을 사용�
   - 객체 타입의 인수는 참조 값이 복사되어 매개변수에 전달되기 때문에 함수 몸체에서 참조 값을 통해 객체를 변경할 경우 원본이 훼손된다.
     - 객체를 **불변 객체**로 만들어 사용하면 문제를 해결할 수 있다.
 
-```jsx
+```js
 // 매개변수 primitive는 원시 값을 전달받고, 매개변수 obj는 객체를 전달받는다.
 function changeVal(primitive, obj) {
   primitive += 100;
@@ -356,7 +356,7 @@ console.log(person); // {name: "Kim"}
 
 함수 정의와 동시에 즉시 호출되는 함수
 
-```jsx
+```js
 // 익명 즉시 실행 함수
 (function () {
   var a = 3;
@@ -365,7 +365,7 @@ console.log(person); // {name: "Kim"}
 })();
 ```
 
-```jsx
+```js
 // 기명 즉시 실행 함수
 (function foo() {
   var a = 3;
@@ -382,7 +382,7 @@ foo(); // ReferenceError: foo is not defined
 
 즉시 실행 함수는 반드시 그룹 연산자로 감싸야 한다.
 
-```jsx
+```js
 function () { // SyntaxError: Function statements require a function name
   // ...
 }();
@@ -390,19 +390,19 @@ function () { // SyntaxError: Function statements require a function name
 
 함수 선언문의 형식에 맞지 않아 발생하는 에러
 
-```jsx
+```js
 function foo() {
   // ...
 }(); // SyntaxError: Unexpected token ')'
 ```
 
-```jsx
+```js
 function foo() {}(); // => function foo() {};();
 ```
 
 세미콜론 자동 삽입에 의해 발생하는 에러
 
-```jsx
+```js
 (); // SyntaxError: Unexpected token ')'
 ```
 
@@ -440,7 +440,7 @@ ES6부터는 if 문이나 for 문 등의 코드 블록 내에서도 정의할 �
 
 콜백 함수가 고차 함수 내부에만 호출된다면 콜백 함수를 익명 함수 리터럴로 정의하면서 곧바로 고차 함수에 전달하는 것이 일반적이다.
 
-```jsx
+```js
 // 익명 함수 리터럴을 콜백 함수로 고차 함수에 전달한다.
 // 익명 함수 리터럴은 repeat 함수를 호출할 때마다 평가되어 함수 객체를 생성한다.
 repeat(5, function (i) {
@@ -450,7 +450,7 @@ repeat(5, function (i) {
 
 그러나 콜백 함수를 전달받는 함수가 자주 호출된다면 함수 외부에서 콜백 함수를 정의한 후 함수 참조를 고차 함수에 전달하는 편이 효율적이다.
 
-```jsx
+```js
 // logOdds 함수는 단 한 번만 생성된다.
 var logOdds = function (i) {
   if (i % 2) console.log(i);
@@ -469,7 +469,7 @@ repeat(5, logOdds); // 1 3
   - 인수의 불변성을 유지한다.
   - 함수의 외부 상태를 변경하지 않는다.
 
-  ```jsx
+  ```js
   var count = 0; // 현재 카운트를 나타내는 상태
 
   // 순수 함수 increase는 동일한 인수가 전달되면 언제나 동일한 값을 반환한다.
@@ -487,7 +487,7 @@ repeat(5, logOdds); // 1 3
 
 - **비순수 함수**: 외부 상태에 의존하거나 외부 상태를 변경하는 부수 효과가 있는 함수
 
-  ```jsx
+  ```js
   var count = 0; // 현재 카운트를 나타내는 상태: increase 함수에 의해 변화한다.
 
   // 비순수 함수

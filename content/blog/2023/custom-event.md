@@ -17,7 +17,7 @@ tags: ["Javascript"]
 
 ## 1. Event() 생성자
 
-```jsx
+```js
 const event = new Event(type, options);
 ```
 
@@ -35,7 +35,7 @@ const event = new Event(type, options);
     - 섀도 루트?
       Shadow root(Shadow DOM)은 웹 요소 내부에 캡슐화된 DOM 트리를 생성하는 데 사용된다. 일반적인 HTML 문서의 DOM은 하나의 트리 구조로 표현되지만 Shadow Root를 사용하면 요소 내에 독립적인 DOM 서브 트리를 만들 수 있다. Shadow Root 내부에서 발생한 이벤트는 외부로 전파되지 않고, 독립적인 이벤트 흐름을 가진다. 이를 통해 웹 컴포넌트 내부에서 발생한 이벤트를 외부에서 감지하지 못하게 할 수 있다.
 
-```jsx
+```js
 // 버블링 가능하고 취소 불가능한 look 이벤트 생성
 
 const evt = new Event("look", { bubbles: true, cancelable: false });
@@ -47,7 +47,7 @@ myDiv.dispatchEvent(evt);
 
 ## 2. CustomEvent() 생성자
 
-```jsx
+```js
 const customEvent = new CustomEvent(type, options);
 ```
 
@@ -62,11 +62,11 @@ const customEvent = new CustomEvent(type, options);
 
 커스텀 이벤트를 사용하기 위해서 `dispatchEvent()` 메서드를 사용해야 한다.
 
-```jsx
+```js
 EventTarget.dispatchEvent(event);
 ```
 
-```jsx
+```js
 // EventTarget 인스턴스를 생성합니다. 이벤트가 발생할 요소를 나타냅니다.
 const targetElement = document.getElementById("myElement");
 

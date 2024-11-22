@@ -12,7 +12,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 ### 1. 숫자 타입
 
-```jsx
+```js
 var integer = 10; // 정수
 var double = 10.12; // 실수
 var negative = -20; // 음의 정수
@@ -36,7 +36,7 @@ var hex = 0x41;
 
 백틱을 이용한 문자열 표기법
 
-```jsx
+```js
 var template = `Template Literal`;
 ```
 
@@ -67,7 +67,7 @@ ES6에 추가된 새로운 타입
 
 Symbol 함수를 호출하여 생성한다.
 
-```jsx
+```js
 var key = Symbol("key");
 console.log(typeof key); // symbol
 ```

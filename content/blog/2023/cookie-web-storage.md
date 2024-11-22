@@ -20,14 +20,14 @@ tags: ["Web"]
 
 key-value 형식을 따른다.
 
-```jsx
+```js
 document.cookie = ‘newCookie’
 document.cookie = “username=John Doe”;
 ```
 
 `expires` 파라미터를 통해 쿠키의 만료일을 지정할 수 있다.
 
-```jsx
+```js
 document.cookie = “username=John Doe; expires=Thu, 14 Dec 2034 12:00:00 UTC”;
 
 // Note: UTC is a time standard (the coordinated universal time).
@@ -40,7 +40,7 @@ document.cookie = “username=John Doe; expires=Thu, 14 Dec 2034 12:00:00 UTC”
 
 아무런 path를 지정하지 않으면 현재 페이지에 쿠키가 포함된다.
 
-```jsx
+```js
 document.cookie =
   "username=John Doe; expires=Thu, 14 Dec 2034 12:00:00 UTC; path=/";
 

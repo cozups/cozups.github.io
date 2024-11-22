@@ -27,7 +27,7 @@ tags: ["React"]
 
 타겟 DOM 노드에 `createRoot` 메서드를 호출하고 `render` 메서드를 호출하여 렌더링을 시작한다.
 
-```jsx
+```js
 import Image from "./Image.js";
 import { createRoot } from "react-dom/client";
 
@@ -50,7 +50,7 @@ root.render(<Image />);
 
 렌더링 과정은 재귀적이다. 컴포넌트가 다른 컴포넌트를 리턴한다면 리액트는 그 컴포넌트들을 렌더링할 것이다. 중첩되는 컴포넌트가 없을 때까지 리액트는 계속해서 이 과정을 반복한다.
 
-```jsx
+```js
 // index.js
 import Gallery from "./Gallery.js";
 import { createRoot } from "react-dom/client";
@@ -59,7 +59,7 @@ const root = createRoot(document.getElementById("root"));
 root.render(<Gallery />);
 ```
 
-```jsx
+```js
 // Gallery.js
 export default function Gallery() {
   return (
@@ -97,7 +97,7 @@ function Image() {
 
 **React는 이전 렌더링 결과와 다음 렌더링 결과 사이에 차이점이 존재할 때만 DOM 노드를 변경한다.**
 
-```jsx
+```js
 export default function Clock({ time }) {
   return (
     <>

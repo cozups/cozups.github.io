@@ -32,14 +32,14 @@ tags: ["TypeScript"]
 
 # 타입스크립트 컴파일러
 
-```jsx
+```js
 // index.ts
 let age: number = 20;
 ```
 
 위 코드를 `tsc index.ts` 명령어를 통면
 
-```jsx
+```js
 var age = 20;
 ```
 

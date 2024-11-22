@@ -16,7 +16,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 - 렉시컬 환경: “코드가 어디서 실행되며 주변에 어떤 코드가 있는지”
   - 코드의 문맥은 렉시컬 환경으로 이루어진다.
 
-```jsx
+```js
 var x = "global";
 
 function foo() {
@@ -63,7 +63,7 @@ console.log(x); // ②
 
 함수는 중첩이 될 수 있으며 이는 곧 **스코프가 함수의 중첩에 의해 계층적 구조를 갖는다**는 의미를 갖는다.
 
-```jsx
+```js
 var x = "global x";
 var y = "global y";
 
@@ -109,7 +109,7 @@ console.log(z); // ⑧ ReferenceError: z is not defined
 
 ## 스코프 체인에 의한 변수 검색
 
-```jsx
+```js
 var x = "global x";
 var y = "global y";
 
@@ -153,7 +153,7 @@ console.log(z); // ⑧ ReferenceError: z is not defined
 
 ## 스코프 체인에 의한 함수 검색
 
-```jsx
+```js
 // 전역 함수
 function foo() {
   console.log("global function foo");
@@ -186,7 +186,7 @@ bar();
   - 오로지 함수의 코드 블록(함수 몸체)만을 지역 스코프로 인정하는 것
   - var 키워드로 선언된 변수
 
-```jsx
+```js
 var x = 1;
 
 if (true) {
@@ -200,7 +200,7 @@ if (true) {
 console.log(x); // 10
 ```
 
-```jsx
+```js
 var i = 10;
 
 // for 문에서 선언한 i는 전역 변수다. 이미 선언된 전역 변수 i가 있으므로 중복 선언된다.
@@ -216,7 +216,7 @@ console.log(i); // 5
 
 # 렉시컬 스코프
 
-```jsx
+```js
 var x = 1;
 
 function foo() {

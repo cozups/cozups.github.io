@@ -67,7 +67,7 @@ ESM은 독자적인 모듈 스코프를 갖는다.
 
 export 키워드는 선언문 앞에 사용한다.
 
-```jsx
+```js
 // lib.mjs
 // 변수의 공개
 export const pi = Math.PI;
@@ -87,7 +87,7 @@ export class Person {
 
 export할 대상을 하나의 객체로 구성하여 한번에 export할 수도 있다.
 
-```jsx
+```js
 // lib.mjs
 const pi = Math.PI;
 
@@ -109,7 +109,7 @@ export { pi, square, Person };
 
 다른 모듈에서 공개한 식별자를 자신의 모듈 스코프 내부로 로드하려면 import 키워드를 사용한다.
 
-```jsx
+```js
 // app.mjs
 // 같은 폴더 내의 lib.mjs 모듈이 export한 식별자 이름으로 import한다.
 // ESM의 경우 파일 확장자를 생략할 수 없다.
@@ -124,7 +124,7 @@ console.log(new Person("Lee")); // Person { name: 'Lee' }
 
 이 경우 as 뒤에 지정한 이름의 객체에 프로퍼티로 할당된다.
 
-```jsx
+```js
 // app.mjs
 // lib.mjs 모듈이 export한 모든 식별자를 lib 객체의 프로퍼티로 모아 import한다.
 import * as lib from "./lib.mjs";
@@ -136,7 +136,7 @@ console.log(new lib.Person("Lee")); // Person { name: 'Lee' }
 
 모듈이 export한 식별자 이름을 변경하여 import할 수도 있다.
 
-```jsx
+```js
 // app.mjs
 // lib.mjs 모듈이 export한 식별자 이름을 변경하여 import한다.
 import { pi as PI, square as sq, Person as P } from "./lib.mjs";
@@ -150,14 +150,14 @@ console.log(new P("Kim")); // Person { name: 'Kim' }
 
 default 키워드를 사용하는 경우 기본적으로 이름 없이 하나의 값을 export한다.
 
-```jsx
+```js
 // lib.mjs
 export default x => x * x;
 ```
 
 default 키워드를 사용하는 경우 var, let, const 키워드는 사용할 수 없다.
 
-```jsx
+```js
 // lib.mjs
 export default const foo = () => {};
 // => SyntaxError: Unexpected token 'const'
@@ -166,7 +166,7 @@ export default const foo = () => {};
 
 default 키워드와 함께 export한 모듈은 `{}` 없이 임의의 이름으로 import 한다.
 
-```jsx
+```js
 // app.mjs
 import square from "./lib.mjs";
 

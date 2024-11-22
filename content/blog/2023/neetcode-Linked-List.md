@@ -15,7 +15,8 @@ tags: ["Javascript", "PS"]
 next 포인터를 반대 방향으로 돌리면 된다.
 
 - 코드
-  ```jsx
+
+  ```js
   /**
    * Definition for singly-linked list.
    * function ListNode(val, next) {
@@ -50,7 +51,8 @@ next 포인터를 반대 방향으로 돌리면 된다.
 각 리스트의 노드를 하나씩 비교하며 작은 것을 앞에 붙이면 된다.
 
 - 코드
-  ```jsx
+
+  ```js
   /**
    * Definition for singly-linked list.
    * function ListNode(val, next) {
@@ -103,7 +105,8 @@ next 포인터를 반대 방향으로 돌리면 된다.
   - 하나씩 움직이는 slow 포인터와 두개씩 움직이는 fast 포인터가 같은 위치에서 만나면 사이클 존재
 
 - 코드 (Set을 이용한 방법)
-  ```jsx
+
+  ```js
   /**
    * Definition for singly-linked list.
    * function ListNode(val) {
@@ -130,8 +133,10 @@ next 포인터를 반대 방향으로 돌리면 된다.
     return false;
   };
   ```
+
 - 코드 (Floyd's Tortoise & Hare Algorithm)
-  ```jsx
+
+  ```js
   /**
    * Definition for singly-linked list.
    * function ListNode(val) {
@@ -173,7 +178,8 @@ next 포인터를 반대 방향으로 돌리면 된다.
 - 그리고 첫번째 리스트는 처음부터, 두번째 리스트는 끝에서부터 이어붙인다.
 - 마지막 노드는 next를 null로 지정한다.
 - 코드
-  ```jsx
+
+  ```js
   /**
    * Definition for singly-linked list.
    * function ListNode(val, next) {
@@ -237,7 +243,8 @@ next 포인터를 반대 방향으로 돌리면 된다.
 - L 포인터가 ‘3’에 위치해 있는 상태에서 ‘5’에 연결하면 ‘4’가 삭제된다.
 - dummy.next를 반환한다.
 - 코드
-  ```jsx
+
+  ```js
   /**
    * Definition for singly-linked list.
    * function ListNode(val, next) {

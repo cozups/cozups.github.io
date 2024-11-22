@@ -11,7 +11,7 @@ tags: ["React"]
 1. `react-router-dom` 패키지 설치하기
 2. `import { createBrowserRouter } from 'react-router-dom';`
 
-   ```jsx
+   ```js
    import { createBrowserRouter } from "react-router-dom";
 
    import Home from "./pages/Home";
@@ -28,7 +28,7 @@ tags: ["React"]
 
 3. RouterProvider를 이용해서 라우팅하기
 
-   ```jsx
+   ```js
    import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
    import Home from "./pages/Home";
@@ -44,7 +44,7 @@ tags: ["React"]
 
 ## 다른 방법으로 라우팅하기
 
-```jsx
+```js
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -75,7 +75,7 @@ export default App;
 
 ## 1. a 태그 이용하기
 
-```jsx
+```js
 import React from "react";
 
 function HomePage() {
@@ -100,7 +100,7 @@ a 태그를 이용하는 경우 싱글 HTML 페이지를 제공하지만 모든 
 
 ## 2. Link 이용하기
 
-```jsx
+```js
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -126,7 +126,7 @@ a 태그를 사용했을 때 생기는 **http 리퀘스트를 막아준다**.
 
 네비게이션 바 같은 공통 컴포넌트를 사용할 때
 
-```jsx
+```js
 // App.js
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -154,7 +154,7 @@ export default App;
 
 공통으로 사용할 라우트의 children 값으로 기존 라우트들을 넣으면 기존 요소들을 감싸주는 효과가 생겨 모든 경로에서 공통 컴포넌트를 표시할 수 있다.
 
-```jsx
+```js
 // Root.js
 import React from "react";
 import { Outlet } from "react-router-dom";
@@ -186,7 +186,7 @@ export default RootLayout;
 
 어떠한 경로에서 에러가 발생하면 결국 루트 페이지로 에러가 bubble up 되기 때문에 루트 경로에 errorElement를 지정하여 에러 페이지를 표시할 수 있다.
 
-```jsx
+```js
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import HomePage from "./pages/Home";
@@ -223,7 +223,7 @@ Link 컴포넌트를 NavLink로 바꾸고 className을 추가하면 className은
 
 style 프롭에서도 동일하게 사용할 수 있다.
 
-```jsx
+```js
 import React from "react";
 import { NavLink } from "react-router-dom";
 
@@ -274,7 +274,7 @@ export default MainNavigation;
 
 이런 경우 react-router-dom에서 제공하는 `useNavigate`를 사용한다.
 
-```jsx
+```js
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -309,7 +309,7 @@ export default HomePage;
 
 라우트 엘리먼트에 데이터를 전달하기 위해 렌더링 전에 수행하는 함수
 
-```jsx
+```js
 const router = createBrowserRouter([
   {
     path: "/",
@@ -352,7 +352,7 @@ loader에서 throw되는 오류는 bubble up 되어, 페이지가 errorElement �
 
 엘리먼트(컴포넌트) 안에서 loader 데이터를 사용하고자 할 때 사용한다.
 
-```jsx
+```js
 import { useLoaderData } from "react-router-dom";
 
 import EventsList from "../components/EventsList";
@@ -376,7 +376,7 @@ export default EventsPage;
 
 loader 함수에서 throw한 error를 캐치하여 사용하고자 할 때 사용한다.
 
-```jsx
+```js
 import React from "react";
 import { useRouteError } from "react-router-dom";
 import MainNavigation from "../components/MainNavigation";
@@ -419,7 +419,7 @@ export default ErrorPage;
 
 get이 아닌 요청을 할 때 action 함수가 호출된다. (get은 loader)
 
-```jsx
+```js
 import React from "react";
 import { json, redirect } from "react-router-dom";
 
@@ -463,7 +463,7 @@ export async function action({ request, params }) {
 
 `useSubmit` 훅을 사용하면 Form 컴포넌트를 이용하여 제출하는 듯한 작업이 가능하다.
 
-```jsx
+```js
 function EventItem({ event }) {
   const submit = useSubmit();
 

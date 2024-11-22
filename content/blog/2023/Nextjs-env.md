@@ -11,12 +11,12 @@ tags: ["Next.js"]
 # 서버 사이드
 
 - `.env.local`에 환경 변수 작성
-  ```jsx
+  ```js
   DB_HOST = localhost;
   DB_USER = myuser;
   DB_PASS = mypassword;
   ```
-  ```jsx
+  ```js
   // pages/index.js
   export async function getStaticProps() {
     const db = await myDB.connect({
@@ -35,10 +35,12 @@ server-only secret을 지키기 위해 빌드 타임 때 평가되어 실제로 
 # 클라이언트 사이드
 
 - 브라우저 단에서 사용할 땐 `NEXT_PUBLIC_` 을 붙일 것
-  ```jsx
+
+  ```js
   NEXT_PUBLIC_ANALYTICS_ID = abcdefghijk;
   ```
-  ```jsx
+
+  ```js
   // pages/index.js
   import setupAnalyticsService from "../lib/my-analytics-service";
 
@@ -52,8 +54,10 @@ server-only secret을 지키기 위해 빌드 타임 때 평가되어 실제로 
 
   export default HomePage;
   ```
+
   아래와 같이 변수를 활용하여 환경 변수에 접근하는 것은 불가함
-  ```jsx
+
+  ```js
   // This will NOT be inlined, because it uses a variable
   const varName = "NEXT_PUBLIC_ANALYTICS_ID";
   setupAnalyticsService(process.env[varName]);

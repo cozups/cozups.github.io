@@ -25,7 +25,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 함수 객체는 내부 슬롯 [[Environment]]에 저장한 상위 스코프를 자신이 존재하는 한 기억한다.
 
-```jsx
+```js
 const x = 1;
 
 function foo() {
@@ -51,7 +51,7 @@ bar(); // ?
 
 ## 3. 클로저와 렉시컬 환경
 
-```jsx
+```js
 const x = 1;
 
 // ①
@@ -87,7 +87,7 @@ innerFunc(); // ④ 10
 
 1. 상위 스코프의 식별자를 참조하지 않는 함수
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -121,7 +121,7 @@ innerFunc(); // ④ 10
 
 1. 외부 함수보다 일찍 소멸하는 중첩 함수
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -155,7 +155,7 @@ innerFunc(); // ④ 10
 
 즉, 상태를 안전하게 은닉하고 특정 함수에게만 상태 변경을 허용하기 위해 사용된다.
 
-```jsx
+```js
 // 카운트 상태 변수
 let num = 0;
 
@@ -174,7 +174,7 @@ console.log(increase()); // 3
 
 카운트 상태를 안전하게 변경하고 유지하기 위해서는 increase 함수만이 num 변수를 참조하고 변경할 수 있게 하는 것이 바람직하다.
 
-```jsx
+```js
 // 카운트 상태 변경 함수
 const increase = (function () {
   // 카운트 상태 변수
@@ -198,7 +198,7 @@ console.log(increase()); // 3
 
 클로저는 외부 상태 변경이나 가변 데이터를 피하고 불변성을 지향하는 함수형 프로그래밍에서 부수 효과를 최대한 억제하여 오류를 피하고 프로그램의 안정성을 높이기 위해 적극적으로 사용된다.
 
-```jsx
+```js
 // 함수를 인수로 전달받고 함수를 반환하는 고차 함수
 // 이 함수는 카운트 상태를 유지하기 위한 자유 변수 counter를 기억하는 클로저를 반환한다.
 function makeCounter(aux) {
@@ -247,7 +247,7 @@ increaser 함수와 decreaser 함수는 별개의 독립된 렉시컬 환경을 
 
 대부분의 객체 지향 프로그래밍 언어는 public, private, protected와 같은 접근 제한자를 선언할 수 있지만 자바스크립트는 접근 제한자를 제공하지 않는다. 따라서 자바스크립트 객체의 모든 프로퍼티와 메서드는 기본적으로 public하다.
 
-```jsx
+```js
 function Person(name, age) {
   this.name = name; // public
   let _age = age; // private
@@ -275,7 +275,7 @@ sayHi 메서드는 인스턴스 메서드이므로 Person 객체가 생성될 �
 
 sayHi 메서드를 프로토타입 메서드로 바꾸어 중복 생성을 방지해보면
 
-```jsx
+```js
 const Person = (function () {
   let _age = 0; // private
 
@@ -305,7 +305,7 @@ console.log(you.name); // Kim
 console.log(you._age); // undefined
 ```
 
-```jsx
+```js
 const me = new Person("Lee", 20);
 me.sayHi(); // Hi! My name is Lee. I am 20.
 
@@ -324,7 +324,7 @@ Person 생성자 함수와 sayHi 메서드는 즉시 실행 함수의 \_age 변�
 
 ## 6. 자주 발생하는 실수
 
-```jsx
+```js
 var funcs = [];
 
 for (var i = 0; i < 3; i++) {
@@ -340,7 +340,7 @@ for (var j = 0; j < funcs.length; j++) {
 
 for 문의 변수 선언문에서 var 키워드로 선언한 i는 블록 레벨 스코프가 아닌 함수 레벨 스코프를 갖기 때문에 전역 변수다. 따라서 funcs 배열의 요소로 추가한 함수를 호출하면 전역 변수 i를 참조하므로 3이 출력된다.
 
-```jsx
+```js
 var funcs = [];
 
 for (var i = 0; i < 3; i++) {
@@ -363,7 +363,7 @@ for (var j = 0; j < funcs.length; j++) {
 
 더 쉬운 방법은 let 키워드를 사용하는 것이다.
 
-```jsx
+```js
 const funcs = [];
 
 for (let i = 0; i < 3; i++) {

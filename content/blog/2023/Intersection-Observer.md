@@ -18,7 +18,7 @@ Intersection Observer는 JavaScript API로, 엘리먼트가 화면 상에 표시
 
 1. Intersection Observer 객체 생성하기
 
-   ```jsx
+   ```js
    const observer = new IntersectionObserver(callback, options);
    ```
 
@@ -34,14 +34,14 @@ Intersection Observer는 JavaScript API로, 엘리먼트가 화면 상에 표시
 
 2. 관찰 대상 엘리먼트 등록
 
-   ```jsx
+   ```js
    const target = document.querySelector(".target");
    observer.observe(target);
    ```
 
 3. 콜백 함수 구현
 
-   ```jsx
+   ```js
    const callback = (entries, observer) => {
      entries.forEach(entry => {
        if (entry.isIntersecting) {
@@ -60,7 +60,7 @@ Intersection Observer는 JavaScript API로, 엘리먼트가 화면 상에 표시
 
 ### 예시
 
-```jsx
+```js
 const callback = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {

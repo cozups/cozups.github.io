@@ -14,7 +14,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 (전역 변수의 생명 주기는 애플리케이션의 생명 주기와 같다.)
 
-```jsx
+```js
 function foo() {
   var x = "local";
   console.log(x); // local
@@ -53,7 +53,7 @@ foo 함수를 호출하지 않으면 함수 내부의 변수 선언문이 실행
 
 이는 스코프도 마찬가지다.
 
-```jsx
+```js
 var x = "global";
 
 function foo() {
@@ -126,7 +126,7 @@ var 키워드는 변수의 중복 선언을 허용하므로 생명 주기가 긴
 
 ## 1. 즉시 실행 함수
 
-```jsx
+```js
 (function () {
   var foo = 10; // 즉시 실행 함수의 지역 변수
   // ...
@@ -141,7 +141,7 @@ console.log(foo); // ReferenceError: foo is not defined
 
 전역에 네임스페이스 역할을 담당할 객체를 생성하고 전역 변수처럼 사용하고 싶은 변수를 프로퍼티로 추가하는 방법이다.
 
-```jsx
+```js
 var MYAPP = {}; // 전역 네임스페이스 객체
 
 MYAPP.name = "Lee";
@@ -149,7 +149,7 @@ MYAPP.name = "Lee";
 console.log(MYAPP.name); // Lee
 ```
 
-```jsx
+```js
 var MYAPP = {}; // 전역 네임스페이스 객체
 
 MYAPP.person = {
@@ -170,7 +170,7 @@ console.log(MYAPP.person.name); // Lee
   - 객체의 프로퍼티와 메서드를 하나로 묶는 것
   - 객체의 특정 프로퍼티나 메서드를 감출 목적으로 사용하기도 한다. (**정보** **은닉**)
 
-```jsx
+```js
 var Counter = (function () {
   // private 변수
   var num = 0;

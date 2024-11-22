@@ -10,7 +10,7 @@ tags: ["Javascript", "PS"]
 
 백준으로 문제 풀 때
 
-```jsx
+```js
 const fs = require("fs");
 // 백준은 linux 환경임.
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
@@ -35,7 +35,7 @@ solution(inputC, inputTestCase);
 
 ## 2. readline 모듈 사용하기
 
-```jsx
+```js
 const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,

@@ -40,7 +40,7 @@ CRA(create-react-app)로 생성된 프로젝트는 기본적으로 RTL과 Jest�
 
 # 4. test 작성하기
 
-```jsx
+```js
 test(name, fn, timeout);
 ```
 
@@ -50,7 +50,7 @@ test(name, fn, timeout);
   - default 5s
   - ex) 5000 → 5초 동안 테스트가 완료되지 않으면 타임아웃
 
-```jsx
+```js
 test("Greet renders correctly", () => {
   render(<Greet />); // Virtual DOM을 이용하여 Greet 컴포넌트를 렌더링
   const textElement = screen.getByText("Hello"); // screen에서 'Hello' 텍스트를 가진 노드 찾기
@@ -64,7 +64,7 @@ test("Greet renders correctly", () => {
 ## alternative
 
 - `it`: test의 대안
-  ```jsx
+  ```js
   describe("Greet", () => {
     it("renders correctly", () => {
       render(<Greet />);
@@ -86,14 +86,14 @@ test("Greet renders correctly", () => {
 
 # 6. Test 그룹화하기
 
-```jsx
+```js
 describe(name, fn);
 ```
 
 - `name`: 그룹 이름
 - `fn`: 테스트가 검증해야 할 것들에 대한 코드가 담긴 함수
 
-```jsx
+```js
 describe("Greet", () => {
   test("renders correctly", () => {
     render(<Greet />);
@@ -113,7 +113,7 @@ describe("Greet", () => {
 
 `describe`는 중첩도 가능하다.
 
-```jsx
+```js
 describe("Greet", () => {
   test("renders correctly", () => {
     render(<Greet />);
@@ -148,7 +148,7 @@ describe("Greet", () => {
 
 [Running Tests | Create React App](https://create-react-app.dev/docs/running-tests/#coverage-reporting)
 
-```jsx
+```js
 // package.json (CRA)
 ...
 "scripts": {
@@ -174,7 +174,7 @@ describe("Greet", () => {
 
 index.tsx파일이나 reportWebVitals.ts는 주로 테스트 할 필요가 없으므로 src/components 폴더 속 테스트 파일만 코드 커버리지를 실행하기 위해 `--collectCoverageFrom` 옵션을 사용할 수 있다.
 
-```jsx
+```js
 // package.json
 ...
 "scripts": {
@@ -193,7 +193,7 @@ index.tsx파일이나 reportWebVitals.ts는 주로 테스트 할 필요가 없�
 
 특정 수준의 코드 커버리지를 설정하고 이 수준 이하의 커버리지가 감지되면 빌드나 테스트를 실패하도록 하는 기능
 
-```jsx
+```js
 // package.json
 ...
 "jest": {

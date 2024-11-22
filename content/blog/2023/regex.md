@@ -10,7 +10,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 정규 표현식은 문자열의 패턴 매칭 기능을 제공한다. (문자열에서 특정 문자 찾기, 치환 등)
 
-```jsx
+```js
 // 사용자로부터 입력받은 휴대폰 전화번호
 const tel = "010-1234-567팔";
 
@@ -34,7 +34,7 @@ regExp.test(tel); // -> false
 
 ![Untitled](./images/regexp1.png)
 
-```jsx
+```js
 const target = "Is this all there is?";
 
 // 패턴: is
@@ -47,7 +47,7 @@ regexp.test(target); // -> true
 
 ## 2. RegExp 생성자 함수
 
-```jsx
+```js
 const target = "Is this all there is?";
 
 const regexp = new RegExp(/is/i); // ES6
@@ -59,7 +59,7 @@ regexp.test(target); // -> true
 
 RegExp 함수를 이용하면 동적으로 정규 표현식을 사용할 수 있다.
 
-```jsx
+```js
 const count = (str, char) => (str.match(new RegExp(char, "gi")) ?? []).length;
 
 count("Is this all there is?", "is"); // -> 3
@@ -72,7 +72,7 @@ count("Is this all there is?", "xx"); // -> 0
 
 패턴 검색 매칭 결과를 배열로 변환하여 반환한다. 없으면 null을 반환한다.
 
-```jsx
+```js
 const target = "Is this all there is?";
 const regExp = /is/;
 
@@ -84,7 +84,7 @@ regExp.exec(target);
 
 패턴 검색 매칭 결과가 존재하는지 불리언 값으로 반환한다.
 
-```jsx
+```js
 const target = "Is this all there is?";
 const regExp = /is/;
 
@@ -96,7 +96,7 @@ regExp.test(target);
 
 매칭 결과를 배열로 반환한다.
 
-```jsx
+```js
 const target = "Is this all there is?";
 const regExp = /is/;
 
@@ -106,7 +106,7 @@ target.match(regExp);
 
 exec 메서드와의 차이점은, exec 메서드는 문자열 내 모든 패턴을 검색하는 g 플래그를 지정해도 첫 번째 매칭 결과만 반환한다. 그러나 match 메서드는 g 플래그를 지정하면 모든 매칭 결과를 반환한다.
 
-```jsx
+```js
 const target = "Is this all there is?";
 const regExp = /is/g;
 
@@ -122,7 +122,7 @@ target.match(regExp);
 - `g`: 패턴과 일치하는 모든 문자열 전역 검
 - `m`: 문자열의 행이 바뀌더라도 검색
 
-```jsx
+```js
 const target = "Is this all there is?";
 
 // target 문자열에서 is 문자열을 대소문자를 구별하여 한 번만 검색한다.
@@ -148,7 +148,7 @@ target.match(/is/gi);
 
 `.`은 문자 한 개를 의미한다. `...`을 패턴으로 사용하면 문자의 내용과 상관없이 3자리 문자열을 찾는다.
 
-```jsx
+```js
 const target = "Is this all there is?";
 
 target.match(/.../g);
@@ -159,7 +159,7 @@ target.match(/.../g);
 
 `{m, n}`은 앞선 패턴이 최소 m번, 최대 n번 반복되는 문자열을 찾는다.
 
-```jsx
+```js
 const target = "A AA B BB Aa Bb AAA";
 
 target.match(/A{1,2}/g);
@@ -169,7 +169,7 @@ target.match(/A{1,2}/g);
 
 `{n}`은 앞선 패턴이 n번 반복되는 문자열을 찾는다.
 
-```jsx
+```js
 const target = "A AA B BB Aa Bb AAA";
 
 target.match(/A{2}/g);
@@ -178,7 +178,7 @@ target.match(/A{2}/g);
 
 `{n,}`은 앞선 패턴이 최소 n번 반복되는 문자열을 찾는다.
 
-```jsx
+```js
 const target = "A AA B BB Aa Bb AAA";
 
 target.match(/A{2,}/g);
@@ -189,7 +189,7 @@ target.match(/A{2,}/g);
 
 즉, `+`는 `{1,}`과 같다.
 
-```jsx
+```js
 const target = "A AA B BB Aa Bb AAA";
 
 target.match(/A+/g);
@@ -200,7 +200,7 @@ target.match(/A+/g);
 
 즉, `?`는 `{0, 1}`과 같다.
 
-```jsx
+```js
 const target = "color colour";
 
 // 'colo' 다음 'u'가 최대 한 번(0번 포함) 이상 반복되고 'r'이 이어지는 문자열 'color', 'colour'를 전역 검색한다.
@@ -213,7 +213,7 @@ target.match(regExp); // -> ["color", "colour"]
 
 `|`를 통해 OR 검색을 할 수 있다.
 
-```jsx
+```js
 const target = "A AA B BB Aa Bb";
 const regExp = /A|B/g;
 
@@ -223,7 +223,7 @@ target.match(regExp);
 
 분해되지 않은 단어 레벨로 검색하려면 `+`를 활용한다.
 
-```jsx
+```js
 const target = "A AA B BB Aa Bb";
 const regExp = /A+|B+/g;
 
@@ -233,7 +233,7 @@ target.match(regExp);
 
 `[]`내의 문자는 or로 동작한다. 그 뒤에 `+`를 사용하면 앞선 패턴을 한 번 이상 반복한다.
 
-```jsx
+```js
 const target = "A AA B BB Aa Bb";
 const regExp = /[AB]+/g;
 
@@ -243,7 +243,7 @@ target.match(regExp);
 
 범위를 지정하려면 `[]`내에 `-`를 이용한다.
 
-```jsx
+```js
 const target = "A AA B BB Aa Bb";
 const regExp = /[A-Z]+/g; // 대소문자 찾기
 
@@ -251,7 +251,7 @@ target.match(regExp);
 // ['A', 'AA', 'B', 'BB', 'A', 'B']
 ```
 
-```jsx
+```js
 const target = "AA BB Aa Bb 12";
 
 // 'A' ~ 'Z' 또는 'a' ~ 'z'가 한 번 이상 반복되는 문자열을 전역 검색한다.
@@ -260,7 +260,7 @@ const regExp = /[A-Za-z]+/g;
 target.match(regExp); // -> ["AA", "BB", "Aa", "Bb"]
 ```
 
-```jsx
+```js
 const target = "AA BB 12,345";
 
 // '0' ~ '9'가 한 번 이상 반복되는 문자열을 전역 검색한다.
@@ -269,7 +269,7 @@ const regExp = /[0-9]+/g;
 target.match(regExp); // -> ["12", "345"]
 ```
 
-```jsx
+```js
 const target = "AA BB 12,345";
 
 // '0' ~ '9' 또는 ','가 한 번 이상 반복되는 문자열을 전역 검색한다.
@@ -282,7 +282,7 @@ target.match(regExp); // -> ["12,345"]
 
 `\D`는 숫자가 아닌 문자를 의미한다.
 
-```jsx
+```js
 const target = "AA BB 12,345";
 
 // '0' ~ '9' 또는 ','가 한 번 이상 반복되는 문자열을 전역 검색한다.
@@ -300,7 +300,7 @@ target.match(regExp); // -> ["AA BB ", ","]
 
 `\W`는 그와 반대로 동작한다.
 
-```jsx
+```js
 const target = "Aa Bb 12,345 _$%&";
 
 // 알파벳, 숫자, 언더스코어, ','가 한 번 이상 반복되는 문자열을 전역 검색한다.
@@ -318,7 +318,7 @@ target.match(regExp); // -> [" ", " ", ",", " ", "$%&"]
 
 `[...]` 내의 `^`는 NOT을 의미한다.
 
-```jsx
+```js
 const target = "AA BB 12 Aa Bb";
 
 // 숫자를 제외한 문자열을 전역 검색한다.
@@ -331,7 +331,7 @@ target.match(regExp); // -> ["AA BB ", " Aa Bb"]
 
 `[...]` 밖의 `^`는 문자열의 시작을 의미한다.
 
-```jsx
+```js
 const target = "https://poiemaweb.com";
 
 // 'https'로 시작하는지 검사한다.
@@ -344,7 +344,7 @@ regExp.test(target); // -> true
 
 `$`는 문자열의 마지막을 의미한다.
 
-```jsx
+```js
 const target = "https://poiemaweb.com";
 
 // 'com'으로 끝나는지 검사한다.

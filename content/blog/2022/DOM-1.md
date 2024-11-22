@@ -79,7 +79,7 @@ id 값은 HTML 문서 내에서 유일한 값이어야 한다.
 
 HTML 요소에 id 어트리뷰트를 부여하면 id 값과 동일한 이름의 전역 변수가 암묵적으로 선언되고 해당 노드 객체가 할당되는 부수 효과가 있다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -98,7 +98,7 @@ HTML 요소에 id 어트리뷰트를 부여하면 id 값과 동일한 이름의 
 
 단, id 값과 동일한 이름의 전역 변수가 이미 선언되어 있다면 이 전역 변수에 노드 객체가 재할당되지 않는다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -123,7 +123,7 @@ HTML 요소에 id 어트리뷰트를 부여하면 id 값과 동일한 이름의 
 
 HTML 문서의 모든 요소 노드를 취득하려면 인수로 `*` 을 전달한다.
 
-```jsx
+```js
 // 모든 요소 노드를 탐색하여 반환한다.
 const $all = document.getElementsByTagName("*");
 // -> HTMLCollection(8) [html, head, body, ul, li#apple, li#banana, li#orange, script, apple: li#apple, banana: li#banana, orange: li#orange]
@@ -160,7 +160,7 @@ NodeList 객체는 유사 배열 객체이면서 이터러블이다.
 
 HTML 문서의 모든 요소 노드를 취득하려면 querySelectorAll 메서드의 인수로 `*` 을 전달한다.
 
-```jsx
+```js
 // 모든 요소 노드를 탐색하여 반환한다.
 const $all = document.querySelectorAll("*");
 // -> NodeList(8) [html, head, body, ul, li#apple, li#banana, li#orange, script]
@@ -174,7 +174,7 @@ const $all = document.querySelectorAll("*");
 
 `Element.prototype.matches` 메서드는 인수로 전달한 CSS 선택자를 통해 특정 요소 노드를 취득할 수 있는지 확인한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -210,7 +210,7 @@ HTMLCollection과 NodeList의 특징은 **노드 객체의 상태 변화를 실�
 
 **언제나** 노드 객체의 상태 변화를 실시간으로 반영한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <head>
   <style>
@@ -261,7 +261,7 @@ HTMLCollection과 NodeList의 특징은 **노드 객체의 상태 변화를 실�
 
 실시간으로 노드 객체의 상태 변경을 반영하지 않는(non-live) 객체다. 그러나 chileNodes 프로퍼티가 반환하는 NodeList 객체는 live 객체로 동작한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -312,7 +312,7 @@ DOM 트리 상의 노드를 탐색할 수 있도록 Node, Element 인터페이�
 
 HTML 요소 사이의 스페이스, 탭, 줄바꿈 등의 공백 문자는 텍스트 노드를 생성한다. 이를 공백 텍스트 노드라 한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -365,7 +365,7 @@ HTML 요소 사이의 스페이스, 탭, 줄바꿈 등의 공백 문자는 텍�
 
 `firstChild` 프로퍼티가 반환한 노드는 텍스트 노드이거나 요소 노드다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -384,7 +384,7 @@ HTML 요소 사이의 스페이스, 탭, 줄바꿈 등의 공백 문자는 텍�
 
 텍스트 노드는 DOM 트리의 리프 노드이므로 부모 노드가 텍스트 노드인 경우는 없다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -444,7 +444,7 @@ HTML 요소 사이의 스페이스, 탭, 줄바꿈 등의 공백 문자는 텍�
 
 텍스트 노드가 아닌 문서노드나 요소 노드의 nodeValue 프로퍼티를 참조하면 null을 반환한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -467,7 +467,7 @@ HTML 요소 사이의 스페이스, 탭, 줄바꿈 등의 공백 문자는 텍�
 
 텍스트 노드의 nodeValue 프로퍼티에 값을 할당하면 텍스트 노드의 텍스트를 변경할 수 있다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -493,7 +493,7 @@ HTML 요소 사이의 스페이스, 탭, 줄바꿈 등의 공백 문자는 텍�
 
 즉, 요소 노드의 childNodes 프로퍼티가 반환한 모든 노드들의 텍스트 노드의 값을 반환한다. HTML 마크업은 무시된다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -510,7 +510,7 @@ HTML 요소 사이의 스페이스, 탭, 줄바꿈 등의 공백 문자는 텍�
 
 이때 할당한 문자열에 HTML 마크업이 포함되어 있더라도 문자열 그대로 인식되어 텍스트로 취급된다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>

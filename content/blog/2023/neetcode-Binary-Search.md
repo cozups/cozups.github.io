@@ -26,7 +26,8 @@ tags: ["Javascript", "PS"]
 위 방법이다.
 
 - 코드
-  ```jsx
+
+  ```js
   /**
    * @param {number[]} nums
    * @return {number}
@@ -70,7 +71,8 @@ tags: ["Javascript", "PS"]
     - 그 외에는 오른쪽 파트에 있는 것이므로 L = M + 1
 
 - 코드
-  ```jsx
+
+  ```js
   /**
    * @param {number[]} nums
    * @param {number} target

@@ -18,7 +18,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 예) [[Prototype]] 내부 슬롯은 `__proto__` 를 통해 간접적으로 접근할 수 있다.
 
-```jsx
+```js
 const o = {};
 
 o.[[Prototype]];  // Uncaught SyntaxError: Unexpected token '['
@@ -41,7 +41,7 @@ o.__proto__;  // Object.prototype
 
 내부 슬롯이기 때문에 프로퍼티 어트리뷰트에 직접 접근할 수 없지만 `Object.getOwnPropertyDescriptor` 메서드를 통해서 간접적으로 확인할 수는 있다.
 
-```jsx
+```js
 const person = {
   name: "Lee",
 };
@@ -58,7 +58,7 @@ console.log(Object.getOwnPropertyDescriptor(person, "name"));
 
 ES8에서 `Object.getOwnPropertyDescriptors` 메서드는 모든 프로퍼티의 프로퍼티 어트리뷰트 정보를 제공하는 프로퍼티 디스크립터 객체들을 반환한다.
 
-```jsx
+```js
 const person = {
   name: "Lee",
 };
@@ -92,7 +92,7 @@ console.log(Object.getOwnPropertyDescriptors(person));
 ![](./images/property-attr-2.png)
 ![](./images/property-attr-3.png)
 
-```jsx
+```js
 const person = {
   firstName: "cozups",
   lastName: "Kim",
@@ -148,7 +148,7 @@ descriptor = Object.getOwnPropertyDescriptor(person, "fullName");
 
 `Object.defineProperty` 메서드를 통해 프로퍼티 어트리뷰트를 정의할 수 있다.
 
-```jsx
+```js
 const person = {};
 
 // 데이터 프로퍼티
@@ -185,7 +185,7 @@ Object.defineProperty(person, "fullName", {
 
 `Object.defineProperties` 메서드를 사용하면 여러 개의 프로퍼티를 한 번에 정의할 수 있다.
 
-```jsx
+```js
 const person = {};
 
 Object.defineProperties(person, {
@@ -231,7 +231,7 @@ console.log(person); // {firstName: 'James', lastName: 'Lee'}
 
 확장이 가능한 객체인지 여부는 `Object.isExtensible` 메서드로 확인할 수 있다.
 
-```jsx
+```js
 const person = { name: "Kim" };
 
 console.log(Object.isExtensible(person)); // true
@@ -263,7 +263,7 @@ Object.defineProperty(person, "age", { value: 20 });
 
 밀봉된 객체인지 여부는 `Object.isSealed` 메서드로 확인할 수 있다.
 
-```jsx
+```js
 const person = { name: "Kim" };
 
 console.log(Object.isSealed(person)); // false
@@ -307,7 +307,7 @@ Object.defineProperty(person, "name", { configurable: true });
 
 동결된 객체인지 여부는 `Object.isFrozen` 메서드로 확인할 수 있다.
 
-```jsx
+```js
 const person = { name: "Kim" };
 
 console.log(Object.isFrozen(person)); // false
@@ -347,7 +347,7 @@ Object.defineProperty(person, "name", { configurable: true });
 
 객체의 중첩 객체까지 동결하여 변경이 불가능한 읽기 전용의 불변 객체를 구현하려면 객체를 값으로 갖는 모든 프로퍼티에 대해 재귀적으로 Object.freeze 메서드를 호출해야 한다.
 
-```jsx
+```js
 const person = {
   name: "Lee",
   address: { city: "Seoul" },
@@ -362,7 +362,7 @@ person.address.city = "Busan";
 console.log(person); // {name: "Lee", address: {city: 'Busan'}}
 ```
 
-```jsx
+```js
 function deepFreeze(target) {
   // 객체가 아니거나 동결된 객체는 무시하고, 객체가 동결되지 않은 객체일 때
   if (target && typeof target === "object" && !Object.isFrozen(target)) {

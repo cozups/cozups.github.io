@@ -12,7 +12,7 @@ tags: ["React"]
 
 전역 상태 관리를 하면 props drilling 현상을 방지할 수 있다.
 
-```jsx
+```js
 function App() {
   return <GrandParent value="Hello World!" />;
 }
@@ -75,13 +75,13 @@ redux는…
 
 1. createContext를 이용하여 context를 만들 수 있다.
 
-   ```jsx
+   ```js
    const context = createContext(`context 기본값`);
    ```
 
 2. useContext를 이용하여 context를 사용할 수 있다.
 
-   ```jsx
+   ```js
    const contextToUse = useContext(`사용할 context`);
    ```
 
@@ -91,7 +91,7 @@ redux는…
 
    1. value 값은 필수! value 값이 컴포넌트에 전달된다.
 
-   ```jsx
+   ```js
    function Sub1() {
      const theme = useContext(themeContext);
      return (
@@ -109,7 +109,7 @@ redux는…
 
 # 예시
 
-```jsx
+```js
 import React, { createContext, useContext } from "react";
 import "./style.css";
 
@@ -168,7 +168,7 @@ function Sub3() {
 
 상태가 빈번하게 변경되는 경우 영향을 받지 않는 부분까지도 리렌더링이 되기 때문에 성능에 좋지 않다.
 
-```jsx
+```js
 import React, { createContext, useState, useContext, useMemo } from "react";
 
 const CounterContext = createContext();
@@ -232,7 +232,7 @@ function Buttons() {
 
 따라서 값과 업데이트 함수의 context를 따로 두어 사용한다.
 
-```jsx
+```js
 import React, { createContext, useState, useContext, useMemo } from "react";
 
 const CounterValueContext = createContext();

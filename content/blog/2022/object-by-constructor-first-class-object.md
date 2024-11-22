@@ -15,7 +15,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 ## 1. Object 생성자 함수
 
-```jsx
+```js
 const person = new Object(); // 빈 객체 생성
 
 // 프로퍼티 및 메서드 추가
@@ -49,7 +49,7 @@ person.sayHello(); // Hi! My name is Lee
 
 🎈 예제
 
-```jsx
+```js
 const circle1 = {
   radius: 5,
   getDiameter() {
@@ -73,7 +73,7 @@ console.log(circle2.getDiameter()); // 20
 
 객체(인스턴스)를 생성하기 위한 템플릿(클래스)처럼 **프로퍼티 구조가 동일한 객체 여러 개를 간편하게 생성**할 수 있다.
 
-```jsx
+```js
 // 생성자 함수
 function Circle(radius) {
   this.radius = radius;
@@ -128,7 +128,7 @@ this 바인딩은 함수 호출 방식에 따라 동적으로 결정된다.
 
 생성자 함수 내부에서 모든 처리가 끝나면 완성된 인스턴스가 바인딩된 this를 암묵적으로 반환한다.
 
-```jsx
+```js
 // 생성자 함수
 function Circle(radius) {
   // 1. 암묵적으로 빈 객체 생성 + this 바인딩
@@ -155,7 +155,7 @@ console.log(circle); // Circle {radius: 1, getDiameter: function}
 
 ### new 연산자를 사용하지 않는다면?
 
-```jsx
+```js
 function Circle(radius) {
   this.radius = radius;
   this.getDiameter = function () {
@@ -184,7 +184,7 @@ console.log(radius); // 15 (일반 함수로서 호출된 Circle의 this는 전�
     `new` 연산자 없이 일반 함수로서 호출된 경우 `new.target`은 undefined이다.
     이를 이용하여 `new.target`이 undefined인 경우 재귀적으로 `new 생성자함수` 를 호출하여 인스턴스를 반환하게 만들 수 있다.
 
-```jsx
+```js
 function Circle(radius) {
   if (!new.target) {
     return new Circle(radius);
@@ -200,7 +200,7 @@ function Circle(radius) {
 다만, IE에서는 `new.target`을 지원하지 않으므로 스코프 세이프 생성자 패턴을 사용할 수 있다.
 자바스크립트 엔진이 암묵적으로 인스턴스를 만들고 this에 바인딩하는 것을 이용한 방법이다.
 
-```jsx
+```js
 function Circle(radius){
 	if(!(this instanceOf Circle)) {
 		return new Circle(radius);
@@ -226,7 +226,7 @@ function Circle(radius){
 3. **함수의 매개변수에 전달될 수 있다.**
 4. **함수의 반환값으로 사용할 수 있다.**
 
-```jsx
+```js
 // 1. 무명의 리터럴로 생성
 // 2. 변수에 저장
 const increase = function () {
@@ -273,7 +273,7 @@ console.log(decreaser()); // -2
 3. 선언형 함수
 4. 일급 객체와 고차함수
 
-```jsx
+```js
 // 1급 객체
 const addTwo = num => num + 2;
 const multiplyTwo = num => num * 2;

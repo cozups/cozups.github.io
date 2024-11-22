@@ -38,7 +38,7 @@ tags: ["Docs", "Refactoring"]
 
 즉, 데이터베이스에 담긴 정보 중 meal, routine에 저장된 ID를 가지고 DB의 meals, routines 컬렉션에서그 ID에 해당하는 데이터를 가져와야 합니다.
 
-```jsx
+```js
 async findById(id: string) {
     const post = await Post.aggregate([
       // 1. id로 해당 데이터 검색

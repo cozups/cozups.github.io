@@ -29,7 +29,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 ### 매개변수
 
-```jsx
+```js
 const timeoutId = setTimeout(func|code[, delay, param1, param2, ...]);
 ```
 
@@ -51,7 +51,7 @@ setTimeout 함수는 생성된 타이머를 식별할 수 있는 고유한 타�
 
 이후 타이머가 만료될 때마다 첫 번째 인수로 전달받은 콜백 함수가 반복 호출된다.
 
-```jsx
+```js
 const timerId = setInterval(func|code[, delay, param1, param2, ... ]);
 ```
 

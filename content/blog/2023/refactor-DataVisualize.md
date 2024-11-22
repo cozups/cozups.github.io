@@ -23,7 +23,7 @@ https://github.com/LifeIsAlone/DataVisualize
 
 # 1. csv 파일 파싱 방식 변경 - PapaParse 라이브러리
 
-```jsx
+```js
 const handleFileRead = e => {
   const file = e.target.files[0];
 
@@ -43,7 +43,7 @@ const handleFileRead = e => {
 
 # 2. CSV 데이터 전역 상태 공유
 
-```jsx
+```js
 import { createContext, useState } from "react";
 
 export const ChartContext = createContext({
@@ -104,7 +104,7 @@ reportWebVitals();
 
 기존의 코드는 이러했다.
 
-```jsx
+```js
 const handleKeys = index => {
   if (isActive(index)) {
     const newKeys = activeKeys.filter(item => item !== chartKeys[index]);
@@ -122,7 +122,7 @@ const handleKeys = index => {
 
 이를 해결하기 위해서 활성화 된 키를 배열의 요소로 다루기보다 키 구조를 다음과 같이 객체로 바꾸어 관리하였다.
 
-```jsx
+```js
 {
     name: chartKey,
     activated: false,
@@ -134,7 +134,7 @@ const handleKeys = index => {
 
 키를 토글 시
 
-```jsx
+```js
 const toggleActivation = index => {
   const updatedChartKey = chartKey.map((data, i) => {
     if (i !== index) return data;
@@ -157,7 +157,7 @@ activated를 반전하여 활성화 여부를 토글한다.
 
 기존 차트의 컬러를 쓰는 방식은 색 10개가 들어있는 컬러셋을 하드코딩하여 사용했다.
 
-```jsx
+```js
 const colorSet = [
   "#4cc9f0",
   "#ffb703",
@@ -175,7 +175,7 @@ const colorSet = [
 랜덤 컬러로 지정하는 경우 흰색이 나오거나 보기 불편한 색이 나오는 것을 방지하기 위함이었다.
 키가 많을 경우를 고려하여 다시 랜덤 컬러 코드를 생성하는 코드를 사용했다.
 
-```jsx
+```js
 function randomColorGenerator() {
   const hue = Math.floor(Math.random() * 360);
   const saturation = Math.floor(Math.random() * 100);
@@ -192,7 +192,7 @@ function randomColorGenerator() {
 
 ![my-chart-image.jpeg](./images/my-chart-image.jpeg)
 
-```jsx
+```js
 const saveChartImage = () => {
   const element = document.querySelector(".recharts-wrapper");
 

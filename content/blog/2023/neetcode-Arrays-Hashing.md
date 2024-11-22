@@ -22,7 +22,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {number[]} nums
    * @return {boolean}
@@ -38,7 +38,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {number[]} nums
    * @return {boolean}
@@ -71,7 +71,7 @@ HashMap을 이용하여 각 알파벳의 개수를 카운팅하여 비교하면 
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {string} s
    * @param {string} t
@@ -107,7 +107,7 @@ HashMap을 이용하여 풀 수 있다.
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {number[]} nums
    * @param {number} target
@@ -143,7 +143,7 @@ HashMap을 이용하여 풀 수 있다.
 
 - 1번 풀이 코드
 
-  ```jsx
+  ```js
   /**
    * @param {string[]} strs
    * @return {string[][]}
@@ -170,7 +170,7 @@ HashMap을 이용하여 풀 수 있다.
 
 - 2번 풀이 코드
 
-  ```jsx
+  ```js
   /**
    * @param {string[]} strs
    * @return {string[][]}
@@ -208,7 +208,7 @@ HashMap을 이용하여 풀 수 있다.
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {number[]} nums
    * @param {number} k
@@ -240,7 +240,7 @@ HashMap을 이용하여 풀 수 있다.
 
 - 코드
 
-  ```jsx
+  ```js
   var topKFrequent = function (nums, k) {
     const freqMap = new Map();
     const bucket = [];
@@ -282,7 +282,7 @@ i번째 숫자를 기준으로 앞부분의 곱셈 값과 뒷부분의 곱셈 �
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {number[]} nums
    * @return {number[]}
@@ -328,7 +328,7 @@ Set을 이용하여 쉽게 찾을 수 있다.
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {number[]} nums
    * @return {number}

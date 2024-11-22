@@ -69,7 +69,7 @@ Redux는 애플리케이션에 있는 중앙 데이터(상태) 저장소와 같�
 
   # Redux의 기본적 사용
 
-  ```jsx
+  ```js
   // 프로젝트에서 사용하는 것이 아닌 단일 js 파일에서 사용
   const redux = require("redux");
 
@@ -111,7 +111,7 @@ Redux는 애플리케이션에 있는 중앙 데이터(상태) 저장소와 같�
   2. store, reducer 함수 생성
   3. App 컴포넌트를 렌더링하는 index.js 에서 Provider로 감싸기
 
-     ```jsx
+     ```js
      import {Provider} from 'react-redux';
      ...
 
@@ -125,7 +125,7 @@ Redux는 애플리케이션에 있는 중앙 데이터(상태) 저장소와 같�
 
   4. store를 사용할 컴포넌트에서 `useSelector` 훅을 이용하여 state를 가져올 수 있고 `useDispatch` 함수를 이용하여 dispatch할 수 있다.
 
-     ```jsx
+     ```js
      import { useSelector, useDispatch } from 'react-redux';
      ...
 
@@ -155,7 +155,7 @@ Redux는 애플리케이션에 있는 중앙 데이터(상태) 저장소와 같�
 
 ### actions
 
-```jsx
+```js
 const addTodoAction = {
   type: "todos/todoAdded",
   payload: "Buy milk",
@@ -168,7 +168,7 @@ const addTodoAction = {
 
 ### action creators
 
-```jsx
+```js
 const addTodo = text => {
   return {
     type: "todos/todoAdded",
@@ -199,7 +199,7 @@ Redux의 목표는 예측가능한 코드를 만드는 것이다. 외부 변수�
   - immutable update 후 반환
 - 해당 action이 없다면 기존 state를 반환한다.
 
-```jsx
+```js
 const initialState = { value: 0 };
 
 function counterReducer(state = initialState, action) {
@@ -221,7 +221,7 @@ if/else문을 사용하거나 switch문을 사용하여 구현할 수 있다.
 
 ### store
 
-```jsx
+```js
 import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({ reducer: counterReducer });
@@ -236,7 +236,7 @@ getState 메서드를 통해 state 값을 받을 수 있다.
 
 ### dispatch
 
-```jsx
+```js
 store.dispatch({ type: "counter/increment" });
 
 console.log(store.getState());
@@ -249,7 +249,7 @@ dispatch 메서드를 사용하는 것은 “이벤트를 일으키는 것”과
 
 ### selectors
 
-```jsx
+```js
 const selectCounterValue = state => state.value;
 
 const currentValue = selectCounterValue(store.getState());
@@ -263,7 +263,7 @@ state에서 특정 값만 추출하는 함수
 
 ## Redux Store 생성하기
 
-```jsx
+```js
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/counterSlice";
 
@@ -282,7 +282,7 @@ export default configureStore({
 
 slice는 하나의 기능에 대한 reducer 로직과 action을 하나의 파일로 묶은 것을 의미한다.
 
-```jsx
+```js
 import { configureStore } from "@reduxjs/toolkit";
 import usersReducer from "../features/users/usersSlice";
 import postsReducer from "../features/posts/postsSlice";
@@ -301,7 +301,7 @@ state.users, state.posts, state.comments가 각각의 slice로 되어있는 것�
 
 ## Slice reducer와 action 생성하기
 
-```jsx
+```js
 // features/counter/counterSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -340,12 +340,12 @@ redux toolkit에는 action type string, action creator function, action 객체�
 
 따라서 이전의 방식처럼 우리가 직접 action type을 지정하고 action 생성 함수를 작성할 필요가 없다.
 
-```jsx
+```js
 console.log(counterSlice.actions.increment());
 // {type: "counter/increment"}
 ```
 
-```jsx
+```js
 const newState = counterSlice.reducer(
   { value: 10 },
   counterSlice.actions.increment()
@@ -358,7 +358,7 @@ console.log(newState);
 
 `createSlice`함수는 immer 라이브러리를 사용하기 때문에 우리가 immutable update를 하기 쉽게 만들어준다.
 
-```jsx
+```js
 function handwrittenReducer(state, action) {
   return {
     ...state,
@@ -378,7 +378,7 @@ function handwrittenReducer(state, action) {
 
 위의 복잡한 코드를 아래와 같이 쉽게 작성할 수 있도록 도와준다.
 
-```jsx
+```js
 function reducerWithImmer(state, action) {
   state.first.second[action.someId].fourth = action.someValue;
 }
@@ -393,7 +393,7 @@ Thunk는 비동기 로직을 작성할 수 있는 redux 함수이다.
 - dispatch와 getState를 인자로 받는다.
 - thunk 함수를 생성하고 리턴하는 외부 생성 함수가 존재한다.
 
-```jsx
+```js
 // The function below is called a thunk and allows us to perform async logic.
 // It can be dispatched like a regular action: `dispatch(incrementAsync(10))`.
 // This will call the thunk with the `dispatch` function as the first argument.
@@ -409,7 +409,7 @@ export const incrementAsync = amount => dispatch => {
 
 서버로부터 AJAX 호출을 해야한다면 아래와 같이 코드를 작성할 수 있다.
 
-```jsx
+```js
 // the outside "thunk creator" function
 const fetchUserById = userId => {
   // the inside "thunk function"
@@ -432,7 +432,7 @@ const fetchUserById = userId => {
 
 redux store state로부터 필요한 데이터 조각을 추출하는 훅
 
-```jsx
+```js
 // features/counter/counterSlice.js
 
 // The function below is called a selector and allows us to select a value from
@@ -441,7 +441,7 @@ redux store state로부터 필요한 데이터 조각을 추출하는 훅
 export const selectCount = state => state.counter.value;
 ```
 
-```jsx
+```js
 const count = useSelector(selectCount);
 ```
 
@@ -451,11 +451,11 @@ const count = useSelector(selectCount);
 
 redux store로부터 dispatch 메서드를 사용할 수 있도록 하는 훅
 
-```jsx
+```js
 const dispatch = useDispatch();
 ```
 
-```jsx
+```js
 <button
   className={styles.button}
   aria-label="Increment value"
@@ -469,7 +469,7 @@ const dispatch = useDispatch();
 
 ## Providing the store
 
-```jsx
+```js
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -494,7 +494,7 @@ createSlice는 “prepare callback” 함수를 제공한다.
 
 이 함수는 여러 개의 매개변수를 취할 수 있고, 랜덤 unique id를 만들거나 필요한 로직을 수행하고 액션 객체 값을 설정할 수 있다.
 
-```jsx
+```js
 const onSavePostClicked = () => {
   if (title && content) {
     dispatch(
@@ -513,7 +513,7 @@ const onSavePostClicked = () => {
 
 예를 들어, post를 추가하는 함수에서 dispatch함수 속 payload에 `id: nanoid();`를 추가하여 넣었다면
 
-```jsx
+```js
 const postsSlice = createSlice({
   name: "posts",
   initialState,
@@ -548,7 +548,7 @@ const postsSlice = createSlice({
 
 이렇게 하면
 
-```jsx
+```js
 const onSavePostClicked = () => {
   if (title && content) {
     dispatch(postAdded(title, content));
@@ -586,7 +586,7 @@ Thunk 미들웨어가 스토어에 추가되면 store.dispatch에 직접 thunk �
 
 Thunk 함수는 항상 (`dispatch`, `getState`)를 사용하여 호출되며 필요에 따라 thunk 내부에서 사용할 수 있다.
 
-```jsx
+```js
 const store = configureStore({ reducer: counterReducer });
 
 const exampleThunkFunction = (dispatch, getState) => {
@@ -604,7 +604,7 @@ store.dispatch(exampleThunkFunction);
 
 이 action creator는 thunk 내부에서 사용할 수 있는 인수들을 받는다.
 
-```jsx
+```js
 const logAndAdd = amount => {
   return (dispatch, getState) => {
     const stateBefore = getState();
@@ -640,7 +640,7 @@ createAsyncThunk는 두 개의 인수를 받는다.
   - 데이터를 포함하는 Promise
   - 에러와 함께 reject되는 Promise
 
-```jsx
+```js
 import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
 import { client } from "../../api/client";
 
@@ -676,7 +676,7 @@ builder 객체는 추가적인 액션에 대한 reducer를 정의하는 메서�
 
 예시
 
-```jsx
+```js
 import { increment } from "../features/counter/counterSlice";
 
 const postsSlice = createSlice({

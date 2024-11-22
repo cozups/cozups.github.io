@@ -20,7 +20,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 ⇒ 비동기 함수에 **비동기 처리 결과에 대한 후속 처리를 수행하는 콜백 함수를 전달**하는 것이 일반적
 
-```jsx
+```js
 // GET 요청을 위한 비동기 함수
 const get = (url, callback) => {
   const xhr = new XMLHttpRequest();
@@ -49,7 +49,7 @@ get(`${url}/posts/1`, ({ userId }) => {
 });
 ```
 
-```jsx
+```js
 get("/step1", a => {
   get(`/step2/${a}`, b => {
     get(`/step3/${b}`, c => {
@@ -65,7 +65,7 @@ get("/step1", a => {
 
 ## 2. 에러 처리의 한계
 
-```jsx
+```js
 try {
   setTimeout(() => {
     throw new Error("Error!");
@@ -96,7 +96,7 @@ Promise 생성자를 new 연산자와 함께 호출하면 Promise 객체를 생�
   - `resolve`: 비동기 처리가 성공하면 호출되는 함수
   - `reject`: 비동기 처리가 실패하면 호출되는 함수
 
-```jsx
+```js
 // 프로미스 생성
 const promise = new Promise((resolve, reject) => {
   // Promise 함수의 콜백 함수 내부에서 비동기 처리를 수행한다.
@@ -131,7 +131,7 @@ const promise = new Promise((resolve, reject) => {
 
 언제나 프로미스를 반환한다.
 
-```jsx
+```js
 // fulfilled
 new Promise(resolve => resolve("fulfilled")).then(
   v => console.log(v),
@@ -153,14 +153,14 @@ new Promise((_, reject) => reject(new Error("rejected"))).then(
 
 언제나 프로미스를 반환한다.
 
-```jsx
+```js
 // rejected
 new Promise((_, reject) => reject(new Error("rejected"))).catch(e =>
   console.log(e)
 ); // Error: rejected
 ```
 
-```jsx
+```js
 // rejected
 new Promise((_, reject) => reject(new Error("rejected"))).then(undefined, e =>
   console.log(e)
@@ -179,7 +179,7 @@ new Promise((_, reject) => reject(new Error("rejected"))).then(undefined, e =>
 
 언제나 프로미스를 반환한다.
 
-```jsx
+```js
 new Promise(() => {}).finally(() => console.log("finally")); // finally
 ```
 
@@ -189,7 +189,7 @@ new Promise(() => {}).finally(() => console.log("finally")); // finally
 
 1. 비동기 처리에서 발생한 에러는 then 메서드의 두 번째 콜백 함수로 처리할 수 있다.
 
-```jsx
+```js
 const wrongUrl = "https://jsonplaceholder.typicode.com/XXX/1";
 
 // 부적절한 URL이 지정되었기 때문에 에러가 발생한다.
@@ -201,7 +201,7 @@ promiseGet(wrongUrl).then(
 
 1. 프로미스의 후속 처리 메서드 catch를 사용해 처리할 수도 있다.
 
-```jsx
+```js
 const wrongUrl = "https://jsonplaceholder.typicode.com/XXX/1";
 
 // 부적절한 URL이 지정되었기 때문에 에러가 발생한다.
@@ -220,7 +220,7 @@ catch 메서드를 모든 then 메서드를 호출한 이후에 호출하면 비
 
 프로미스 후속 처리 메서드를 연속적으로 호출하는 것
 
-```jsx
+```js
 const url = "https://jsonplaceholder.typicode.com";
 
 // id가 1인 post의 userId를 취득
@@ -235,7 +235,7 @@ promiseGet(`${url}/posts/1`)
 
 이를 해결하기 위해 ES8에 도입된 async/await 를 사용하여 동기 처리처럼 프로미스를 처리할 수 있다.
 
-```jsx
+```js
 const url = "https://jsonplaceholder.typicode.com";
 
 (async () => {
@@ -257,23 +257,23 @@ const url = "https://jsonplaceholder.typicode.com";
 
 - Promise.resolve
   - 인수로 전달받은 값을 resolve 하는 프로미스 생성
-  ```jsx
+  ```js
   // 배열을 resolve하는 프로미스를 생성
   const resolvedPromise = Promise.resolve([1, 2, 3]);
   resolvedPromise.then(console.log); // [1, 2, 3]
   ```
-  ```jsx
+  ```js
   const resolvedPromise = new Promise(resolve => resolve([1, 2, 3]));
   resolvedPromise.then(console.log); // [1, 2, 3]
   ```
 - Promise.reject
   - 인수로 전달받은 값을 reject 하는 프로미스 생성
-  ```jsx
+  ```js
   // 에러 객체를 reject하는 프로미스를 생성
   const rejectedPromise = Promise.reject(new Error("Error!"));
   rejectedPromise.catch(console.log); // Error: Error!
   ```
-  ```jsx
+  ```js
   const rejectedPromise = new Promise((_, reject) =>
     reject(new Error("Error!"))
   );
@@ -289,7 +289,7 @@ const url = "https://jsonplaceholder.typicode.com";
 - **처리 순서가 보장**된다.
 - 하나라도 reject 되는 경우 나머지 프로미스 처리를 기다리지 않고 즉시 종료된다.
 
-```jsx
+```js
 const requestData1 = () =>
   new Promise(resolve => setTimeout(() => resolve(1), 3000));
 const requestData2 = () =>
@@ -319,7 +319,7 @@ requestData1()
 
 총 6초 이상이 소요된다.
 
-```jsx
+```js
 const requestData1 = () =>
   new Promise(resolve => setTimeout(() => resolve(1), 3000));
 const requestData2 = () =>
@@ -336,7 +336,7 @@ Promise.all([requestData1(), requestData2(), requestData3()])
 
 - Promise.all 메서드는 인수로 전달 받은 이터러블의 요소가 프로미스가 아닌 경우 Promise.resolve 메서드를 통해 프로미스로 래핑한다.
 
-```jsx
+```js
 Promise.all([
   1, // => Promise.resolve(1)
   2, // => Promise.resolve(2)
@@ -352,7 +352,7 @@ Promise.all([
 - **가장 먼저 fulfilled 상태**가 된 프로미스의 처리 결과를 resolve하는 새로운 프로미스를 반환한다.
 - 하나라도 rejected 상태가 되면 에러를 reject하는 새로운 프로미스를 즉시 반환한다.
 
-```jsx
+```js
 Promise.race([
   new Promise(resolve => setTimeout(() => resolve(1), 3000)), // 1
   new Promise(resolve => setTimeout(() => resolve(2), 2000)), // 2
@@ -362,7 +362,7 @@ Promise.race([
   .catch(console.log);
 ```
 
-```jsx
+```js
 Promise.race([
   new Promise((_, reject) =>
     setTimeout(() => reject(new Error("Error 1")), 3000)
@@ -394,7 +394,7 @@ Promise.race([
 - **프로미스**의 후속 처리 메서드의 콜백 함수가 일시 저장된다.
 - **마이크로 태스크 큐는 태스크 큐보다 우선순위가 높다.**
 
-```jsx
+```js
 setTimeout(() => console.log(1), 0);
 
 Promise.resolve()
@@ -416,7 +416,7 @@ HTTP 요청 전송 기능을 제공하는 클라이언트 사이드 Web API
 
 fetch 함수는 HTTP 응답을 나타내는 Response 객체를 래핑한 Promise 객체를 반환한다.
 
-```jsx
+```js
 fetch("https://jsonplaceholder.typicode.com/todos/1").then(response =>
   console.log(response)
 );
@@ -424,7 +424,7 @@ fetch("https://jsonplaceholder.typicode.com/todos/1").then(response =>
 
 fetch 함수를 사용할 때는 에러 처리에 주의해야 한다.
 
-```jsx
+```js
 const wrongUrl = "https://jsonplaceholder.typicode.com/XXX/1";
 
 // 부적절한 URL이 지정되었기 때문에 404 Not Found 에러가 발생한다.
@@ -439,7 +439,7 @@ fetch 함수가 반환하는 프로미스는 기본적으로 `404 Not Found`나 
 
 따라서 fetch 함수를 사용할 때는 resolve한 불리언 타입의 ok 상태를 확인해 명시적으로 에러를 처리한다.
 
-```jsx
+```js
 const wrongUrl = "https://jsonplaceholder.typicode.com/XXX/1";
 
 // 부적절한 URL이 지정되었기 때문에 404 Not Found 에러가 발생한다.

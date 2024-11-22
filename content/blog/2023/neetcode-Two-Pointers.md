@@ -20,7 +20,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {string} s
    * @return {boolean}
@@ -73,7 +73,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {number[]} nums
    * @return {number[][]}
@@ -125,7 +125,7 @@ tags: ["Javascript", "PS"]
 
 - 코드
 
-  ```jsx
+  ```js
   /**
    * @param {number[]} height
    * @return {number}

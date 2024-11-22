@@ -42,7 +42,7 @@ XMLHttpRequest 객체를 기반으로 동작한다.
 
 ## 1. JSON 표기 방식
 
-```jsx
+```js
 {
   "name": "Lee",
   "age": 20,
@@ -59,7 +59,7 @@ XMLHttpRequest 객체를 기반으로 동작한다.
 
 객체를 JSON 포맷의 문자열로 변환한다. (직렬화)
 
-```jsx
+```js
 const obj = {
   name: "Lee",
   age: 20,
@@ -110,7 +110,7 @@ string {
 
 객체뿐만 아니라 배열도 JSON 포맷의 문자열로 변환한다.
 
-```jsx
+```js
 const todos = [
   { id: 1, content: "HTML", completed: false },
   { id: 2, content: "CSS", completed: true },
@@ -145,7 +145,7 @@ string [
 
 JSON 포맷의 문자열을 객체로 변환한다. (역직렬화)
 
-```jsx
+```js
 const obj = {
   name: "Lee",
   age: 20,
@@ -166,7 +166,7 @@ console.log(typeof parsed, parsed);
 
 배열의 요소가 객체인 경우 배열의 요소까지 객체로 변환한다.
 
-```jsx
+```js
 const todos = [
   { id: 1, content: "HTML", completed: false },
   { id: 2, content: "CSS", completed: true },
@@ -202,7 +202,7 @@ XMLHttpRequest 생성자 함수를 호출하여 생성한다.
 
 Web API이므로 브라우저 환경에서만 정상적으로 동작한다.
 
-```jsx
+```js
 // XMLHttpRequest 객체 생성
 const xhr = new XMLHttpRequest();
 ```
@@ -243,7 +243,7 @@ const xhr = new XMLHttpRequest();
 2. 필요에 따라 `XMLHttpRequest.prototype.setRequestHeader` 메서드로 특정 HTTP 요청의 헤더 값 설정
 3. `XMLHttpRequest.prototype.send` 메서드로 HTTP 요청 전송
 
-```jsx
+```js
 // XMLHttpRequest 객체 생성
 const xhr = new XMLHttpRequest();
 
@@ -262,7 +262,7 @@ xhr.send();
 
 서버에 전송할 HTTP 요청을 초기화한다.
 
-```jsx
+```js
 xhr.open(method, url[, async])
 ```
 
@@ -303,7 +303,7 @@ setRequestHeader 메서드는 반드시 open 메서드를 호출한 이후에 �
 | application | application/json, application/x-www-form-urlencode |
 | multipart   | multipart/formed-data                              |
 
-```jsx
+```js
 // XMLHttpRequest 객체 생성
 const xhr = new XMLHttpRequest();
 
@@ -326,7 +326,7 @@ HTTP 클라이언트가 서버에 요청할 때 서버가 응답할 데이터의
 
 HTTP 요청의 현재 상태를 나타내는 readyState 프로퍼티 값이 변경된 경우 발생하는 readystatechange 이벤트를 캐치하여 HTTP 응답을 처리할 수 있다.
 
-```jsx
+```js
 // XMLHttpRequest 객체 생성
 const xhr = new XMLHttpRequest();
 
@@ -355,7 +355,7 @@ readystatechange 이벤트 대신 load 이벤트를 캐치해도 된다.
 
 load 이벤트는 HTTP 요청이 성공적으로 완료된 경우 발생한다.
 
-```jsx
+```js
 // XMLHttpRequest 객체 생성
 const xhr = new XMLHttpRequest();
 

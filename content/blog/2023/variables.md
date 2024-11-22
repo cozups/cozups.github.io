@@ -53,7 +53,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 **변수 선언문이 코드의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징**을 **변수 호이스팅**이라 한다.
 
-```jsx
+```js
 console.log(score); // undefined
 
 var score; // 변수 선언문
@@ -65,7 +65,7 @@ var score; // 변수 선언문
 
 **변수 선언은 런타임 이전에 먼저 실행되지만 값의 할당은 런타임에 실행된다.**
 
-```jsx
+```js
 console.log(score); // undefined
 
 var score; // ① 변수 선언
@@ -74,7 +74,7 @@ score = 80; // ② 값의 할당
 console.log(score); // 80
 ```
 
-```jsx
+```js
 console.log(score); // undefined
 
 var score = 80; // 변수 선언과 값의 할당

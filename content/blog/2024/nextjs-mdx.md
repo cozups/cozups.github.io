@@ -10,7 +10,7 @@ tags: ["NextJS", "MDX"]
 
 # mdx란?
 
-MDX는 Markdown와 JSX의 조합으로, Markdown 파일 안에 JSX를 사용할 수 있게 해주는 포맷이다.
+MDX는 Markdown와 js의 조합으로, Markdown 파일 안에 js를 사용할 수 있게 해주는 포맷이다.
 
 # @next/mdx 사용하기
 
@@ -34,7 +34,7 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  pageExtensions: ["ts", "tsx", "js", "js", "md", "mdx"],
   experimental: {
     appDir: true,
     mdxRs: true,
@@ -60,7 +60,7 @@ const withMDX = require("@next/mdx")();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure `pageExtensions` to include MDX files
-  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  pageExtensions: ["js", "js", "mdx", "ts", "tsx"],
   // Optionally, add any other Next.js config below
 };
 
@@ -155,7 +155,7 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  pageExtensions: ["ts", "tsx", "js", "js", "md", "mdx"],
   experimental: {
     appDir: true,
   },

@@ -12,7 +12,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 에러에 대해 대처하지 않고 방치하면 프로그램은 강제 종료 된다.
 
-```jsx
+```js
 console.log("[Start]");
 
 foo(); // ReferenceError: foo is not defined
@@ -24,7 +24,7 @@ console.log("[End]");
 
 `try...catch`문을 사용해 발생한 에러에 적절하게 대응하면 프로그램이 강제 종료되지 않고 계속해서 코드를 실행시킬 수 있다.
 
-```jsx
+```js
 console.log("[Start]");
 
 try {
@@ -48,7 +48,7 @@ console.log("[End]");
 
 # try … catch … finally문
 
-```jsx
+```js
 console.log("[Start]");
 
 try {
@@ -77,7 +77,7 @@ Error 생성자 함수는 에러 객체를 생성한다.
 
 Error 생성자 함수에는 에러를 상세히 설명하는 에러 메시지를 인수로 전달할 수 있다.
 
-```jsx
+```js
 const error = new Error("invalid");
 ```
 
@@ -111,13 +111,13 @@ Error 생성자 함수로 에러 객체를 생성한다고 에러가 발생하�
 
 에러를 발생시키려면 try 코드 블록에서 `throw` 문으로 에러 객체를 던져야 한다.
 
-```jsx
+```js
 throw 표현식;
 ```
 
 에러를 던지면 catch 문의 에러 변수가 생성되고 던져진 에러 객체가 할당된다.
 
-```jsx
+```js
 try {
   // 에러 객체를 생성한다고 에러가 발생하는 것은 아니다.
   new Error("something wrong");
@@ -134,7 +134,7 @@ try {
 
 즉, 콜 스택의 아래 방향으로 전파된다.
 
-```jsx
+```js
 const foo = () => {
   throw Error("foo에서 발생한 에러"); // ④
 };

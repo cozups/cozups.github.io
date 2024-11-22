@@ -26,7 +26,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 그리고 하나 이상의 yield 표현식을 포함한다.
 
-```jsx
+```js
 // 제너레이터 함수 선언문
 function* genDecFunc() {
   yield 1;
@@ -68,7 +68,7 @@ class MyClass {
 - `next` 메서드를 소유하는 이터레이터
   - next 메서드: `value`, `done` 프로퍼티를 갖는 이터레이터 리절트 객체를 반환
 
-```jsx
+```js
 // 제너레이터 함수
 function* genFunc() {
   yield 1;
@@ -94,7 +94,7 @@ console.log("next" in generator); // true
 
   - 반환: `{ value: 인수로 전달받은 값, done: true }`
 
-  ```jsx
+  ```js
   function* genFunc() {
     try {
       yield 1;
@@ -115,7 +115,7 @@ console.log("next" in generator); // true
 
   - 반환: `{ value: undefined, done: true }`
 
-  ```jsx
+  ```js
   function* genFunc() {
     try {
       yield 1;
@@ -142,7 +142,7 @@ console.log("next" in generator); // true
   - 단, `yield` 표현식까지만 실행한다.
 - `yield` 키워드는 제네레이터 함수의 실행을 일시 중지시키거나 `yield` 키워드 뒤에 오는 표현식의 평과 결과를 제네레이터 함수 호출자에게 반환한다.
 
-```jsx
+```js
 // 제너레이터 함수
 function* genFunc() {
   yield 1;
@@ -173,7 +173,7 @@ console.log(generator.next()); // {value: undefined, done: true}
 
 제네레이터 객체의 next 메서드에 전달한 인수는 제네레이터 함수의 yield 표현식을 할당받는 변수에 할당한다.
 
-```jsx
+```js
 function* genFunc() {
   // 처음 next 메서드를 호출하면 첫 번째 yield 표현식까지 실행되고 일시 중지된다.
   // 이때 yield된 값 1은 next 메서드가 반환한 이터레이터 리절트 객체의 value 프로퍼티에 할당된다.
@@ -224,7 +224,7 @@ console.log(res); // {value: 30, done: true}
 
 제네레이터 함수를 사용하면 이터레이션 프로토콜을 준수해 이터러블을 생성하는 방식보다 간단히 이터러블을 구현할 수 있다.
 
-```jsx
+```js
 // 무한 이터러블을 생성하는 함수
 const infiniteFibonacci = (function () {
   let [pre, cur] = [0, 1];
@@ -248,7 +248,7 @@ for (const num of infiniteFibonacci) {
 }
 ```
 
-```jsx
+```js
 // 무한 이터러블을 생성하는 제너레이터 함수
 const infiniteFibonacci = (function* () {
   let [pre, cur] = [0, 1];
@@ -272,7 +272,7 @@ for (const num of infiniteFibonacci) {
 
 ⇒ 프로미스의 후속 처리 메서드 then/catch/finally 없이 비동기 처리 결과를 반환하도록 구현할 수 있다.
 
-```jsx
+```js
 // node-fetch는 node.js 환경에서 window.fetch 함수를 사용하기 위한 패키지다.
 // 브라우저 환경에서 이 예제를 실행한다면 아래 코드는 필요 없다.
 // https://github.com/node-fetch/node-fetch
@@ -313,7 +313,7 @@ async(function* fetchTodo() {
 
 </aside>
 
-```jsx
+```js
 const fetch = require("node-fetch");
 
 async function fetchTodo() {
@@ -334,7 +334,7 @@ fetchTodo();
 
 async 함수가 명시적으로 프로미스를 반환하지 않더라도 async 함수는 **암묵적으로 반환값을 resolve하는 프로미스를 반환한다.**
 
-```jsx
+```js
 // async 함수 선언문
 async function foo(n) {
   return n;
@@ -375,7 +375,7 @@ myClass.bar(5).then(v => console.log(v)); // 5
 
 `await` 키워드는 프로미스가 settled 상태가 되면 프로미스가 resolve한 처리 결과를 반환한다.
 
-```jsx
+```js
 const fetch = require("node-fetch");
 
 const getGithubUserName = async id => {
@@ -387,7 +387,7 @@ const getGithubUserName = async id => {
 getGithubUserName("ungmo2");
 ```
 
-```jsx
+```js
 async function foo() {
   const a = await new Promise(resolve => setTimeout(() => resolve(1), 3000));
   const b = await new Promise(resolve => setTimeout(() => resolve(2), 2000));
@@ -399,7 +399,7 @@ async function foo() {
 foo(); // 약 6초 소요된다.
 ```
 
-```jsx
+```js
 async function foo() {
   const res = await Promise.all([
     new Promise(resolve => setTimeout(() => resolve(1), 3000)),
@@ -419,7 +419,7 @@ foo(); // 약 3초 소요된다.
 
 ## 3. 에러 처리
 
-```jsx
+```js
 try {
   setTimeout(() => {
     throw new Error("Error!");
@@ -434,7 +434,7 @@ async/await에서 에러 처리는 `try...catch` 문을 사용할 수 있다.
 
 콜백 함수를 인수로 전달받는 비동기 함수와는 달리 프로미스를 반환하는 비동기 함수는 명시적으로 호출할 수 있기 때문에 호출자가 명확하다.
 
-```jsx
+```js
 const fetch = require("node-fetch");
 
 const foo = async () => {
@@ -458,7 +458,7 @@ async 함수 내에서 catch문을 사용하여 에러 처리를 하지 않으�
 
 따라서 Promise.prototype.catch 후속 처리 메서드를 통해 에러를 캐치할 수도 있다.
 
-```jsx
+```js
 const fetch = require("node-fetch");
 
 const foo = async () => {

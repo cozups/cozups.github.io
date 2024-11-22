@@ -44,7 +44,7 @@ this 바인딩은 함수 호출 방식에 의해 동적으로 결정된다.
 
   - 이 경우, this 바인딩을 변수에 할당하는 방법이 있다.
 
-  ```jsx
+  ```js
   var value = 1;
 
   const obj = {
@@ -72,7 +72,7 @@ this 바인딩은 함수 호출 방식에 의해 동적으로 결정된다.
 - this → 메서드를 호출한 객체 바인딩
 - 메서드를 소유한 객체가 아닌 메서드를 호출한 객체에 바인딩된다.
 
-```jsx
+```js
 const person = {
   name: "Lee",
   getName() {
@@ -92,7 +92,7 @@ console.log(person.getName()); // Lee
 
 - 따라서 getName 메서드는 다른 객체의 프로퍼티에 할당하여 다른 객체의 메서드가 될 수 있고 일반 변수에 할당하여 일반 함수로 호출될 수도 있다.
 
-  ```jsx
+  ```js
   const anotherPerson = {
     name: "Kim",
   };
@@ -118,7 +118,7 @@ console.log(person.getName()); // Lee
 
 - 프로토타입 메서드 내부의 this도 마찬가지로 해당 메서드를 호출한 객체에 바인딩된다.
 
-```jsx
+```js
 function Person(name) {
   this.name = name;
 }
@@ -142,7 +142,7 @@ console.log(Person.prototype.getName()); // ② Kim
 
 - this → 생성자 함수가 생성할 인스턴스
 
-```jsx
+```js
 // 생성자 함수
 function Circle(radius) {
   // 생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스를 가리킨다.
@@ -165,7 +165,7 @@ console.log(circle2.getDiameter()); // 20
 
 - apply, call 메서드는 this로 사용할 객체와 인수 리스트를 인수로 전달받아 함수를 호출한다.
 
-  ```jsx
+  ```js
   function getThisBinding() {
     return this;
   }
@@ -183,7 +183,7 @@ console.log(circle2.getDiameter()); // 20
   - apply, call 메서드의 본질적인 기능은 함수를 호출하는 것이다.
   - 함수를 호출하면서 첫 번째 인수로 전달한 특정 객체를 호출한 함수의 this에 바인딩한다.
 
-  ```jsx
+  ```js
   function getThisBinding() {
     console.log(arguments);
     return this;
@@ -208,7 +208,7 @@ console.log(circle2.getDiameter()); // 20
 
     - arguments 객체는 배열이 아니기 때문에 Array.prototype.slice 메서드를 사용할 수 없지만 apply, call 메서드를 이용하면 가능하다.
 
-      ```jsx
+      ```js
       function convertArgsToArray() {
         console.log(arguments);
 
@@ -228,7 +228,7 @@ console.log(circle2.getDiameter()); // 20
 
   - 첫 번째 인수로 전달한 값으로 this 바인딩이 교체된 함수를 새롭게 생성해 반환한다.
 
-  ```jsx
+  ```js
   function getThisBinding() {
     return this;
   }
@@ -245,7 +245,7 @@ console.log(circle2.getDiameter()); // 20
 
   - 콜백 함수 내부의 this를 바인딩하는 예시
 
-    ```jsx
+    ```js
     const person = {
       name: "Lee",
       foo(callback) {

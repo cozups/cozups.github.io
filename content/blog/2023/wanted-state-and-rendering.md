@@ -15,11 +15,11 @@ tags: ["React", "원티드 프리온보딩 챌린지"]
   - 상태들이 서로 관련이 없는 경우
 - 컴포넌트 내에서 사용하는 경우
 
-```jsx
+```js
 const [state, setState] = useState(initialState);
 ```
 
-```jsx
+```js
 import { useState } from "react";
 
 function FavoriteColor() {
@@ -31,7 +31,7 @@ function FavoriteColor() {
 
 [State as a Snapshot](https://react.dev/learn/state-as-a-snapshot)
 
-```jsx
+```js
 import { useState } from "react";
 
 export default function Counter() {
@@ -60,7 +60,7 @@ React의 state는 **사용자가 상호 작용한 시점의 상태 스냅샷을 
 
 이를 해결하기 위해 setState 함수 내에 화살표 함수를 이용하여 이전 상태를 기반으로 상태를 업데이트 시킬 수 있다.
 
-```jsx
+```js
 import { useState } from "react";
 
 export default function Counter() {
@@ -92,11 +92,11 @@ export default function Counter() {
   - context API 사용 시 사용하는 것이 일반적
 - reducer를 따로 선언하는 것이 일반적
 
-```jsx
+```js
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
-```jsx
+```js
 import { useReducer } from "react";
 import ReactDOM from "react-dom/client";
 
@@ -181,7 +181,7 @@ useReducer를 사용하는 것이 효율적인 경우는 다음과 같다.
   - [https://github.com/yeonjuan/dev-blog/blob/master/JavaScript/should-you-really-use-usememo.md?utm_source=substack&utm_medium=email](https://github.com/yeonjuan/dev-blog/blob/master/JavaScript/should-you-really-use-usememo.md?utm_source=substack&utm_medium=email)
   - 처리량이 많을 때 사용해야 함. 아닌 경우 오히려 추가 오버헤드가 생김
 
-```jsx
+```js
 import React, { useMemo } from 'react';
 
 function MyComponent({ data }) {
@@ -208,7 +208,7 @@ function MyComponent({ data }) {
 - dependency를 확인해야 하는 함수일 때
 - ChildComponent에 prop으로 넘겨주는 함수일 때
 
-```jsx
+```js
 import React, { useCallback } from "react";
 
 function MyComponent({ onClick }) {
@@ -279,7 +279,7 @@ function MyComponent({ onClick }) {
 - 컴포넌트에서 사이드 이펙트를 수행할 수 있도록 하는 훅
   - fetching data, direct updating the DOM, timer
 
-```jsx
+```js
 import { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 
@@ -304,7 +304,7 @@ root.render(<Timer />);
 - useEffect와 비슷한 훅이지만 DOM 변형이 적용되고 브라우저에 그려지기 전에 실행된다.
   - DOM 변형 → useLayoutEffect → 브라우저
 
-```jsx
+```js
 import { useState, useLayoutEffect } from "react";
 
 function MeasureElement() {
@@ -333,7 +333,7 @@ function MeasureElement() {
   - current 프로퍼티를 반환함.
     - 어떤 값도 저장될 수 있고 렌더링 간 유지된다.
 
-```jsx
+```js
 import { useRef } from "react";
 
 function MyComponent() {

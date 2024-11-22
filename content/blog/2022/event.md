@@ -22,7 +22,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 함수를 언제 호출할지 알 수 없으므로 개발자가 명시적으로 함수를 호출하는것이 아니라 브라우저에게 함수 호출을 위임한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -61,7 +61,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 `on이벤트타입` 과 같은 형식으로 이루어진 이벤트 핸들러 어트리뷰트를 이용하는 방식이다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -81,7 +81,7 @@ tags: ["Javascript", "모던 자바스크립트 Deep Dive"]
 
 `onclick="sayHi('Lee')"` 는 다음과 같이 파싱된다.
 
-```jsx
+```js
 function onclick(event) {
   sayHi("Lee");
 }
@@ -91,14 +91,14 @@ function onclick(event) {
 
 이벤트 핸들러 어트리뷰트 값으로 함수 참조를 할당하는 경우, 인수를 전달하기 곤란해진다.
 
-```jsx
+```js
 // 인수를 전달하기 곤란
 <button onclick="sayHi">Click me!</button>
 ```
 
 이벤트 핸들러 어트리뷰트 값으로 할당한 문자열은 암묵적으로 생성되는 이벤트 핸들러의 함수 몸체이기 때문에 여러 개의 문을 할당할 수 있다.
 
-```jsx
+```js
 <button onclick="console.log(`Hi: `); console.log('Lee');">Click me!</button>
 ```
 
@@ -108,7 +108,7 @@ window 객체와 Document, HTMLElement 타입의 DOM 노드 객체는 이벤트�
 
 이벤트 핸들러 어트리뷰트와 마찬가지로 `on이벤트타입` 의 형식으로 이루어져 있다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -146,7 +146,7 @@ window 객체와 Document, HTMLElement 타입의 DOM 노드 객체는 이벤트�
 - “이벤트 핸들러 어트리뷰트 방식”의 HTML과 자바스크립트가 뒤섞이는 문제를 해결할 수 있다.
 - 이벤트 핸들러 프로퍼티에 하나의 이벤트 핸들러만 바인딩할 수 있다는 단점이 있다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -182,7 +182,7 @@ window 객체와 Document, HTMLElement 타입의 DOM 노드 객체는 이벤트�
   - true: 캡처링
   - false: 버블링 (기본 값)
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -209,7 +209,7 @@ window 객체와 Document, HTMLElement 타입의 DOM 노드 객체는 이벤트�
 
 이벤트 핸들러 프로퍼티 방식과 addEventListener 방식을 모두 사용하여 이벤트 핸들러를 등록하면
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -234,7 +234,7 @@ addEventListener 메서드 방식은 이벤트 핸들러 프로퍼티에 바인�
 
 따라서 2개의 이벤트 핸들러가 모두 호출된다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -258,7 +258,7 @@ addEventListener 메서드 방식은 하나 이상의 이벤트 핸들러를 등
 
 이벤트 핸들러는 등록된 순서대로 호출된다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -285,7 +285,7 @@ addEventListener 메서드로 등록한 이벤트 핸들러는 EventTarget.proto
 
 removeEventListener 메서드에 전달할 인수는 addEventListener 메서드와 동일하며, 전달한 인수가 일치하지 않으면 이벤트 핸들러가 제거되지 않는다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -310,7 +310,7 @@ removeEventListener 메서드에 전달한 이벤트 핸들러와 addEventListen
 
 단, 가명 이벤트 핸들러 내부에서 removeEventListener 메서드를 호출하여 이벤트 핸들러를 제거하는 것은 가능하다.
 
-```jsx
+```js
 $button.addEventListener("click", function foo() {
   console.log("button click");
   // 이벤트 핸들러 제거 -> 여러번 클릭해도 이벤트 핸들러는 단 한 번만 호출
@@ -320,7 +320,7 @@ $button.addEventListener("click", function foo() {
 
 무명 함수를 이벤트 핸들러로 등록한 경우에는 내부에서 함수 자신을 가리키는 `arguments.callee` 를 사용하여 제거할 수 있다.
 
-```jsx
+```js
 $button.addEventListener("click", function () {
   console.log("button click");
   // 이벤트 핸들러 제거
@@ -342,7 +342,7 @@ $button.addEventListener("click", function () {
 
 이벤트 핸들러의 첫 번째 인수로 전달된다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -368,7 +368,7 @@ $button.addEventListener("click", function () {
 
 - 이벤트 핸들러 어트리뷰트 방식
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <head>
@@ -397,7 +397,7 @@ $button.addEventListener("click", function () {
 
 이벤트 핸들러 어트리뷰트 값은 사실 **암묵적으로 생성되는 이벤트 핸들러의 함수 몸체**를 의미하기 때문이다.
 
-```jsx
+```js
 function onclick(event) {
   showCoords(event);
 }
@@ -413,7 +413,7 @@ onclick 이벤트 핸들러의 첫 번째 매개변수의 이름이 event로 암
 
 `new` 연산자와 함께 생성자 함수를 호출하면 이벤트 객체를 생성할 수 있다.
 
-```jsx
+```js
 let e = new Event('foo');
 console.log(e.type);  // foo
 console.log(e instanceOf Event);  // true
@@ -431,7 +431,7 @@ e = new InputEvent('change');
 
 이벤트 객체의 프로퍼티는 발생한 이벤트의 타입에 따라 달라진다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -491,7 +491,7 @@ DOM 트리 상에 존재하는 DOM 요소 노드에서 발생한 이벤트는 DO
 - 타깃 단계: 이벤트가 이벤트 타깃에 도달
 - 버블링 단계: 이벤트가 하위 요소에서 상위 요소 방향으로 전파
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -529,7 +529,7 @@ addEventListener 메서드 방식으로 캡처링 단계의 이벤트 객체를 
 
 예시
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
   <body>
@@ -562,7 +562,7 @@ addEventListener 메서드 방식으로 캡처링 단계의 이벤트 객체를 
 
 이벤트는 캡처링 - 타깃 - 버블링 단계로 전파되므로
 
-```jsx
+```js
 Handler for paragraph.
 Handler for button.
 Handler for body.
@@ -572,7 +572,7 @@ Handler for body.
 
 만약 p 요소를 클릭하면
 
-```jsx
+```js
 Handler for paragraph.
 Handler for body.
 ```
@@ -590,7 +590,7 @@ Handler for body.
 - 여러 개의 하위 DOM 요소에 이벤트 핸들러를 등록할 필요가 없다.
 - 동적으로 하위 DOM 요소를 추가하더라도 일일이 추가된 DOM 요소에 이벤트 핸들러를 등록할 필요가 없다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -626,7 +626,7 @@ Handler for body.
 
 위 코드를 이벤트 위임을 이용하면
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <head>
@@ -673,7 +673,7 @@ DOM 요소는 저마다의 기본 동작이 있다.
 
 이벤트 객체의 preventDefault 메서드는 DOM 요소의 기본 동작을 중단시킨다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -698,7 +698,7 @@ DOM 요소는 저마다의 기본 동작이 있다.
 
 이벤트 객체의 stopPropagation 메서드는 이벤트 전파를 중지시킨다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -730,7 +730,7 @@ DOM 요소는 저마다의 기본 동작이 있다.
 
 ## 이벤트 핸들러 어트리뷰트 방식
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -748,7 +748,7 @@ DOM 요소는 저마다의 기본 동작이 있다.
 
 따라서 위 예제의 handleClick의 this는 window를 가리킨다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -771,7 +771,7 @@ DOM 요소는 저마다의 기본 동작이 있다.
 
 즉, 이벤트 핸들러 내부의 this는 이벤트 객체의 currentTarget 프로퍼티와 같다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -809,7 +809,7 @@ DOM 요소는 저마다의 기본 동작이 있다.
 
 화살표 함수로 정의한 이벤트 핸들러 내부의 this는 상위 스코프의 this를 가리킨다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -847,7 +847,7 @@ DOM 요소는 저마다의 기본 동작이 있다.
 
 클래스에서 이벤트 핸들러를 바인딩하는 경우 this에 주의해야 한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -882,7 +882,7 @@ increase 내부의 this는 클래스가 생성할 인스턴스를 가리키지 �
 
 따라서 increase 메서드를 이벤트 핸들러로 바인딩할 때 `bind` 메서드를 이용해 this를 전달하여 increase 메서드 내부의 this가 클래스가 생성할 인스턴스를 가리키도록 해야한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -915,7 +915,7 @@ increase 내부의 this는 클래스가 생성할 인스턴스를 가리키지 �
 
 다만 이때 이벤트 핸들러 increase는 프로토타입 메서드가 아닌 인스턴스 메서드가 된다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -950,7 +950,7 @@ increase 내부의 this는 클래스가 생성할 인스턴스를 가리키지 �
 
 그러나 인수를 전달할 수 있는 방식이 전혀 없는 것은 아니다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -977,7 +977,7 @@ increase 내부의 this는 클래스가 생성할 인스턴스를 가리키지 �
 
 이벤트 핸들러 내부에서 함수를 호출하면서 인수를 전달할 수 있다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -1017,7 +1017,7 @@ increase 내부의 this는 클래스가 생성할 인스턴스를 가리키지 �
 
 이 경우 일반적으로 customEvent 이벤트 생성자 함수를 사용한다.
 
-```jsx
+```js
 // KeyboardEvent 생성자 함수로 keyup 이벤트 타입의 커스텀 이벤트 객체를 생성
 const keyboardEvent = new KeyboardEvent("keyup");
 console.log(keyboardEvent.type); // keyup
@@ -1029,7 +1029,7 @@ console.log(customEvent.type); // foo
 
 생성된 커스텀 이벤트 객체는 버블링되지 않으며 preventDefault 메서드로 취소할 수도 없다.
 
-```jsx
+```js
 // MouseEvent 생성자 함수로 click 이벤트 타입의 커스텀 이벤트 객체를 생성
 const customEvent = new MouseEvent("click");
 console.log(customEvent.type); // click
@@ -1039,7 +1039,7 @@ console.log(customEvent.cancelable); // false
 
 커스텀 이벤트 객체의 bubbles 또는 cancelable 프로퍼티를 true로 설정하려면 이벤트 생성자 함수의 두 번째 인수로 bubbles 또는 cancelable 프로퍼티를 갖는 객체를 전달한다.
 
-```jsx
+```js
 // MouseEvent 생성자 함수로 click 이벤트 타입의 커스텀 이벤트 객체를 생성
 const customEvent = new MouseEvent("click", {
   bubbles: true,
@@ -1052,7 +1052,7 @@ console.log(customEvent.cancelable); // true
 
 커스텀 이벤트 객체에는 이뿐만 아니라 이벤트 타입에 따라 가지는 이벤트 고유의 프로퍼티 값을 지정할 수 있다.
 
-```jsx
+```js
 // MouseEvent 생성자 함수로 click 이벤트 타입의 커스텀 이벤트 객체를 생성
 const mouseEvent = new MouseEvent("click", {
   bubbles: true,
@@ -1074,7 +1074,7 @@ console.log(keyboardEvent.key); // Enter
 
 사용자 행위에 의해 발생한 이벤트의 이벤트 객체는 isTrusted 프로퍼티 값이 언제나 true다.
 
-```jsx
+```js
 // InputEvent 생성자 함수로 foo 이벤트 타입의 커스텀 이벤트 객체를 생성
 const customEvent = new InputEvent("foo");
 console.log(customEvent.isTrusted); // false
@@ -1086,7 +1086,7 @@ console.log(customEvent.isTrusted); // false
 
 dispatchEvent 메서드에 이벤트 객체를 인수로 전달하면서 호출하면 인수로 전달한 이벤트 타입의 이벤트가 발생한다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>
@@ -1121,7 +1121,7 @@ customEvent 이벤트 생성자 함수에는 두 번째 인수로 이벤트와 �
 
 이 정보는 이벤트 객체의 detail 프로퍼티에 담겨 전달된다.
 
-```jsx
+```js
 <!DOCTYPE html>
 <html>
 <body>

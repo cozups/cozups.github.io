@@ -101,7 +101,7 @@ if (categories.length > 0) {
 3. `src/templates` 폴더에 카테고리 페이지 템플릿을 작성한다. ([코드 링크](https://github.com/cozups/cozups-gatsby-blog/blob/master/src/templates/category-posts.js))
 4. 홈 페이지와 카테고리 페이지에서 카테고리를 쿼리하여 출력한다.
 
-```jsx
+```js
 // components/categories.js
 import * as React from "react";
 import { Link } from "gatsby";
@@ -128,7 +128,7 @@ const Categories = ({ categories, current = "" }) => {
 export default Categories;
 ```
 
-```jsx
+```js
 // templates/blog-list.js
 return (
   <Layout location={location} title={siteTitle}>
@@ -222,7 +222,7 @@ export const pageQuery = graphql`
 
 3. 불러온 tags를 렌더링한다.
 
-```jsx
+```js
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
   location,
@@ -520,7 +520,7 @@ export const pageQuery = graphql`
 
 그리고 페이지네이션의 페이지를 표시하는 부분을 추가해야 하는데 index 페이지와 중복되므로 따로 컴포넌트를 분리하였다.
 
-```jsx
+```js
 // src/components/pagination.js
 import React from "react";
 import { Link } from "gatsby";
@@ -580,7 +580,7 @@ export default Pagination;
 
 이 컴포넌트를 템플릿에 적용한다. 그 결과 코드는 아래와 같다.
 
-```jsx
+```js
 // templates/category-posts.js
 import * as React from "react";
 import { Link, graphql } from "gatsby";

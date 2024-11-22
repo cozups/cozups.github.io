@@ -35,7 +35,7 @@ tags: ["Refactoring"]
 
 카테고리 추가 기능이 있음에도 불구하고 이를 제대로 활용하지 못하는 것이다.
 
-```jsx
+```js
 export const fetchCategories = async () => {
   try {
     const womanCategories = [];
@@ -62,7 +62,7 @@ export const fetchCategories = async () => {
 
 DB로부터 카테고리 정보를 가져와서 성별 별로 나누어 반환한다.
 
-```jsx
+```js
 export async function renderCategories() {
   const slideButtons = [];
 
@@ -124,7 +124,7 @@ export async function renderCategories() {
 
 이 작업이 필요한 페이지는 홈 메인 페이지, 제품 리스트 페이지, 제품 상세 페이지, 검색 페이지이므로 이를 각 페이지의 js파일에 도입한다.
 
-```jsx
+```js
 import * as Api from '/api.js';
 import { renderCategories } from '/category.js';
 
@@ -171,7 +171,7 @@ sideMenus.forEach(
 
 ### 1) 카테고리 데이터에 이미지 프로퍼티 추가
 
-```jsx
+```js
 const CategorySchema = new Schema(
   {
     sex: {
@@ -194,7 +194,7 @@ const CategorySchema = new Schema(
 );
 ```
 
-```jsx
+```js
 await Api.post("/category", { sex, type, image });
 ```
 
@@ -202,7 +202,7 @@ await Api.post("/category", { sex, type, image });
 
 ### 2) 상품 등록 시 해당 카테고리의 이미지 프로퍼티에도 링크 저장
 
-```jsx
+```js
 productRouter.post(
   "/insertion",
   upload.single("image"),
@@ -246,7 +246,7 @@ productRouter.post(
 
 ### 3) 홈 페이지의 슬라이드 이미지 src를 카테고리의 이미지 프로퍼티로 지정
 
-```jsx
+```js
 function renderSlideImages() {
   const womanCategories = JSON.parse(sessionStorage.getItem("womanCategories"));
   const manCategories = JSON.parse(sessionStorage.getItem("manCategories"));
@@ -273,7 +273,7 @@ function renderSlideImages() {
 
 ## 3. all 카테고리 리스트 변경하기
 
-```jsx
+```js
 const pathname = window.location.pathname.split("/");
 const sex = pathname[2];
 const type = pathname[3];
@@ -285,7 +285,7 @@ if (type === "all") {
 }
 ```
 
-```jsx
+```js
 async function getProductAll() {
   try {
     const result = await Api.get("/product/all");
@@ -336,7 +336,7 @@ getProductAll은 모든 제품을 불러와 해당 성별에 맞게 제품을 �
 
 이 단점을 보완하기 위해 세션 스토리지에 로그인 정보를 저장하는 것을 로컬 스토리지에 저장하는 방식으로 바꿨다.
 
-```jsx
+```js
 async function handleSubmit(e) {
   e.preventDefault();
 
@@ -402,7 +402,7 @@ async function handleSubmit(e) {
 </div>
 ```
 
-```jsx
+```js
 const searchForm = document.querySelector(".search-form");
 
 searchForm.addEventListener("submit", searchProducts);
@@ -412,7 +412,7 @@ form 태그를 추가하고 submit 이벤트 리스너를 추가해줬다.
 
 ### 2) 검색 결과 버그 수정
 
-```jsx
+```js
 // 기존 코드
 async function searchProducts() {
   const input = search.value;
@@ -432,7 +432,7 @@ async function searchProducts() {
 }
 ```
 
-```jsx
+```js
 // 개선 코드
 async function searchProducts(e) {
   e.preventDefault();
