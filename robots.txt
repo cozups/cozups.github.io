@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://cozups-log.netlify.app/sitemap-index.xml
-Host: https://cozups-log.netlify.app
+Sitemap: https://cozups.github.io/sitemap-index.xml
+Host: https://cozups.github.io
