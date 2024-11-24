@@ -15,7 +15,7 @@ module.exports = {
       summary: `Junior frontend developer`,
     },
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://cozups-log.netlify.app/`,
+    siteUrl: `https://cozups.github.io/`,
     social: {
       github: `https://github.com/cozups`,
     },
@@ -26,8 +26,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: `https://cozups-log.netlify.app`,
-        sitemap: `https://cozups-log.netlify.app/sitemap-index.xml`,
+        host: `https://cozups.github.io`,
+        sitemap: `https://cozups.github.io/sitemap-index.xml`,
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
