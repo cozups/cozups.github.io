@@ -2,7 +2,7 @@
 title: "개발은 학문이 아니라 운동과 같다."
 date: "2023-04-08"
 description: "요즘 IT [컴퓨팅 사고와 개발 실력 늘리는 공부법]을 읽고"
-category: "Daily"
+category: "Blog"
 tags: ["Blog"]
 ---
 

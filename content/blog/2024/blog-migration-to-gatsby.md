@@ -2,7 +2,7 @@
 title: "Gatsby로 블로그 옮기기"
 date: "2024-05-16"
 description: "노션에서 Gatsby로 블로그를 옮겼다."
-category: "Daily"
+category: "Blog"
 tags: ["Blog"]
 ---
 
