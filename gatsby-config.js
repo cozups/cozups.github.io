@@ -11,10 +11,10 @@ module.exports = {
   siteMetadata: {
     title: `cozups-log`,
     author: {
-      name: `Miso Kim`,
+      name: `김미소 Miso Kim`,
       summary: `Junior frontend developer`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `프론트엔드 개발자 김미소의 개발 블로그`,
     siteUrl: `https://cozups.github.io/`,
     social: {
       github: `https://github.com/cozups`,
