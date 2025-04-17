@@ -341,3 +341,23 @@ tbody td {
 .category-item.active {
   @apply bg-gray-300;
 }
+
+.pen-blue {
+  @apply bg-blue-100 font-semibold;
+}
+
+.pen-green {
+  @apply bg-green-200 font-semibold;
+}
+
+.pen-yellow {
+  @apply bg-amber-200 font-semibold;
+}
+
+.pen-red {
+  @apply bg-red-200 font-semibold;
+}
+
+.note {
+  @apply bg-slate-100 rounded p-4;
+}
