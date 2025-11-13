@@ -1,5 +1,5 @@
 ---
-title: "[React] key에 uuid를 사용하는 것은 좋은 선택이 아니다."
+title: "[React] key에 uuid 함수를 직접 사용하는 것은 좋은 선택이 아니다."
 date: "2023-11-15"
 description: "key의 용도를 알아야 하는 이유"
 category: "Frontend"
